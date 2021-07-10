@@ -9,8 +9,8 @@
             </div>
             <div class="widget-content">
               <p><b><i class="fas fa-mobile-alt"></i> Hotline:</b> <a href="tel:0979396926">0979396926</a></p>
-              <p><b><i class="fas fa-envelope"></i> Email:</b> <a href="mailto:chautatto1995@gmail.com
-" rel="nofollow">chautatto1995@gmail.com
+              <p><b><i class="fas fa-envelope"></i> Email:</b> <a href="mailto:chautattoo1995@gmail.com
+" rel="nofollow">chautattoo1995@gmail.com
                 </a></p>
               <p><b><i class="fas fa-store-alt"></i> Địa chỉ:</b> {{ __('footer.address') }}</p>
             </div>
