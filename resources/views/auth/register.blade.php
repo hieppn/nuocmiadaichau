@@ -25,7 +25,7 @@
 
         <div class="input-group">
           <span class="input-group-addon"><i class="fas fa-user"></i></span>
-          <input id="name" type="text" class="form-control @error('name') is-invalid @enderror" name="name" placeholder="Name" value="{{ old('name') }}" required autocomplete="name" autofocus>
+          <input id="name" type="text" class="form-control @error('name') is-invalid @enderror" name="name" placeholder="Họ và tên" value="{{ old('name') }}" required autocomplete="name" autofocus>
 
           @error('name')
             <span class="invalid-feedback" role="alert">
@@ -47,7 +47,7 @@
 
         <div class="input-group">
           <span class="input-group-addon"><i class="fas fa-mobile"></i></span>
-          <input id="phone" type="tel" class="form-control @error('phone') is-invalid @enderror" name="phone" placeholder="Phone" value="{{ old('phone') }}" required autocomplete="phone">
+          <input id="phone" type="tel" class="form-control @error('phone') is-invalid @enderror" name="phone" placeholder="Số điện thoại" value="{{ old('phone') }}" required autocomplete="phone">
 
           @error('phone')
             <span class="invalid-feedback" role="alert">
@@ -58,7 +58,7 @@
 
         <div class="input-group">
           <span class="input-group-addon"><i class="fas fa-lock"></i></span>
-          <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" placeholder="Password" required autocomplete="new-password">
+          <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" placeholder="Mật Khẩu" required autocomplete="new-password">
 
           @error('password')
             <span class="invalid-feedback" role="alert">
@@ -69,14 +69,14 @@
 
         <div class="input-group">
           <span class="input-group-addon"><i class="fas fa-lock"></i></span>
-          <input id="password-confirm" type="password" class="form-control" name="password_confirmation" placeholder="Password Confirmation" required autocomplete="new-password">
+          <input id="password-confirm" type="password" class="form-control" name="password_confirmation" placeholder="Xác nhận mật khẩu" required autocomplete="new-password">
         </div>
 
-        <button type="submit" class="btn btn-default">REGISTER</button>
+        <button type="submit" class="btn btn-default">Đăng kí</button>
       </form>
     </div>
     <div class="register-social">
-      <div class="register-social-text">Or Register With</div>
+      <div class="register-social-text">Đăng kí với</div>
       <div class="row">
         <div class="col-md-6">
           <a href="#" title="Facebook" class="btn btn-defaule"><i class="fab fa-facebook-square"></i> Facebook</a>
@@ -87,7 +87,7 @@
       </div>
     </div>
     <div class="sign-in-now">
-      You are a member? <a href="{{ route('login') }}">Sign in now</a>
+      Bạn đã có tài khoản? <a href="{{ route('login') }}">Đăng nhập ngay</a>
     </div>
   </div>
 @endsection

@@ -9,8 +9,7 @@
             </div>
             <div class="widget-content">
               <p><b><i class="fas fa-mobile-alt"></i> Hotline:</b> <a href="tel:0979396926">0979396926</a></p>
-              <p><b><i class="fas fa-envelope"></i> Email:</b> <a href="mailto:chautattoo1995@gmail.com
-" rel="nofollow">chautattoo1995@gmail.com
+              <p><b><i class="fas fa-envelope"></i> Email:</b> <a href="mailto:chautattoo1995@gmail.com" rel="nofollow">chautattoo1995@gmail.com
                 </a></p>
               <p><b><i class="fas fa-store-alt"></i> Địa chỉ:</b> {{ __('footer.address') }}</p>
             </div>
@@ -64,7 +63,8 @@
               <h3>{{ __('footer.FollowUs') }}</h3>
             </div>
             <div class="widget-content">
-            <iframe src="https://www.facebook.com/plugins/page.php?href=https%3A%2F%2Fwww.facebook.com%2Fmayepmiadaichau&tabs=timeline&width=260&height=130&small_header=false&adapt_container_width=false&hide_cover=false&show_facepile=false&appId" width="260" height="130" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowfullscreen="true" allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"></iframe>            </div>
+              <iframe src="https://www.facebook.com/plugins/page.php?href=https%3A%2F%2Fwww.facebook.com%2Fmayepmiadaichau&tabs=timeline&width=260&height=130&small_header=false&adapt_container_width=false&hide_cover=false&show_facepile=false&appId" width="260" height="130" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowfullscreen="true" allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"></iframe>
+            </div>
           </div>
         </div>
       </div>
@@ -72,7 +72,7 @@
   </div>
   <div class="footer-bottom">
     <div class="copyright text-center">
-    CTY INOX ĐẠI CHÂU SẢN XUẤT XE NƯỚC MÍA
+      CTY INOX ĐẠI CHÂU SẢN XUẤT XE NƯỚC MÍA
     </div>
   </div>
 </footer>

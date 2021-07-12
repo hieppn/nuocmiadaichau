@@ -1608,6 +1608,7 @@ body {
   border: 0;
   width: 25px;
   margin-right: 5px;
+  margin-top: 20px;
 }
 #trigger-mobile .icon-bar {
   background-color: #fff;
@@ -1913,6 +1914,10 @@ body {
   }
   #header div.search {
     padding: 5px 0;
+    justify-self: center;
+    text-align: center;
+    justify-content: center;
+    justify-items: center;
   }
   #header.header .search .input-search {
     padding-right: 35px;
@@ -2120,6 +2125,7 @@ body {
   .site-posts .section-posts .section-left .section-content .item-post .info-post .desc-post span:first-child {
     padding-right: 5px;
   }
+
   .site-posts .section-posts .section-left .section-content .item-post .info-post .desc-post {
     font-size: 14px;
     color: #aaa !important
@@ -2246,4 +2252,10 @@ img {vertical-align: middle;}
 /* On smaller screens, decrease text size */
 @media only screen and (max-width: 300px) {
   .text {font-size: 11px}
+}
+.w-100{
+  border-radius: 3%;
+}
+.slide-header{
+  padding-bottom: 20px;
 }

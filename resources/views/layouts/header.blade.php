@@ -1,6 +1,6 @@
 <header id="header" class="header">
   <div class="container">
-    <div class="row display-flex">
+    <div class="row display-flex header-flex">
       <div class="col-md-2 margin-auto trigger-menu">
 
         <button type="button" class="navbar-toggle collapsed visible-xs" id="trigger-mobile">
@@ -15,7 +15,7 @@
         </div> -->
       </div>
       <div class="col-md-3 margin-auto">
-        <div class="search">
+        <div class="search" style="margin-right: 10px;width: 200px">
           <form class="search-bar" action="{{ route('search') }}" method="get" accept-charset="utf-8">
             <input class="input-search" type="search" name="search_key" placeholder="{{ __('header.Search') }}" autocomplete="off">
             <button type="submit"><i class="fas fa-search"></i></button>

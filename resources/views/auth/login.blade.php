@@ -38,7 +38,7 @@
 
           <div class="input-group">
             <span class="input-group-addon"><i class="fas fa-lock"></i></span>
-            <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" placeholder="Password" required autocomplete="current-password">
+            <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" placeholder="Mật khẩu" required autocomplete="current-password">
 
             @error('password')
               <span class="invalid-feedback" role="alert">

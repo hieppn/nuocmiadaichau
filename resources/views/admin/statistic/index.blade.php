@@ -509,7 +509,7 @@
         printable: 'print',
         type: 'html',
         documentTitle: ' ',
-        header: 'Báo Cáo Tình Hình Kinh Doanh Website PhoneStore',
+        header: 'Báo Cáo Tình Hình Kinh Doanh Website Đại Châu',
         headerStyle: 'font-size: 14px; margin-bottom: 10px;',
         style: '.box { margin-top: 10px; border-top: none; box-shadow: none; } ' +
                 '@media print { .box-footer { page-break-after: always; } } ' +
