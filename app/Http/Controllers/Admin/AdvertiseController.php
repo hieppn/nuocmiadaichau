@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Storage;
-
+use Google\Cloud\Storage\StorageClient;
 use App\Models\Advertise;
 
 class AdvertiseController extends Controller
@@ -52,10 +52,10 @@ class AdvertiseController extends Controller
     $advertise = new Advertise;
     $advertise->title = $request->title;
 
-    if($request->hasFile('image')){
+    if ($request->hasFile('image')) {
       $image = $request->file('image');
-      $image_name = time().'_'.$image->getClientOriginalName();
-      $image->storeAs('images/advertises',$image_name,'public');
+      $image_name = time() . '_' . $image->getClientOriginalName();
+      $image->storeAs('images/advertises', $image_name, 'public');
       $advertise->image = $image_name;
     }
 
@@ -76,7 +76,7 @@ class AdvertiseController extends Controller
   {
     $advertise = Advertise::where('id', $request->advertise_id)->first();
 
-    if(!$advertise) {
+    if (!$advertise) {
 
       $data['type'] = 'error';
       $data['title'] = 'Thất Bại';
@@ -97,7 +97,7 @@ class AdvertiseController extends Controller
   public function edit($id)
   {
     $advertise = Advertise::where('id', $id)->first();
-    if(!$advertise) abort(404);
+    if (!$advertise) abort(404);
     return view('admin.advertise.edit')->with('advertise', $advertise);
   }
 
@@ -131,11 +131,10 @@ class AdvertiseController extends Controller
     $advertise = Advertise::where('id', $id)->first();
     $advertise->title = $request->title;
 
-    if($request->hasFile('image')){
+    if ($request->hasFile('image')) {
       $image = $request->file('image');
-      $image_name = time().'_'.$image->getClientOriginalName();
-      $image->storeAs('images/advertises',$image_name,'public');
-      Storage::disk('public')->delete('images/advertises/' . $advertise->image);
+      $image_name = time() . '_' . $image->getClientOriginalName();
+      $image->storeAs('images/advertises', $image_name, 'public');
       $advertise->image = $image_name;
     }
 
