@@ -4,6 +4,7 @@ This is a starter template page. Use this page to start your new project from
 scratch. This page gets rid of all links and provides the needed markup only.
 -->
 <html>
+
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -15,7 +16,8 @@ scratch. This page gets rid of all links and provides the needed markup only.
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
   <link rel="icon" href="{{ asset('images/favicon.png') }}" type="image/png">
-
+  <!-- Latest compiled and minified CSS -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
   <!-- Tell the browser to be responsive to screen width -->
   <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
   <link rel="stylesheet" href="{{ asset('AdminLTE/bower_components/bootstrap/dist/css/bootstrap.min.css') }}">
@@ -40,136 +42,143 @@ scratch. This page gets rid of all links and provides the needed markup only.
   <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
   <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
   <![endif]-->
-
+  <!-- Latest compiled and minified CSS -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
   <!-- Google Font -->
-  <link rel="stylesheet"
-        href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
 </head>
 
 <body class="hold-transition skin-red sidebar-mini">
-<div class="wrapper">
+  <div class="wrapper">
 
-  <!-- Main Header -->
-  @include('admin.layouts.header')
-  <!-- Left side column. contains the logo and sidebar -->
-  @include('admin.layouts.sidebar')
+    <!-- Main Header -->
+    @include('admin.layouts.header')
+    <!-- Left side column. contains the logo and sidebar -->
+    @include('admin.layouts.sidebar')
 
-  <!-- Content Wrapper. Contains page content -->
-  <div class="content-wrapper">
-    <!-- Content Header (Page header) -->
-    <section class="content-header">
-      <h1>
-        @yield('title')
-        <small>Control panel</small>
-      </h1>
-      @yield('breadcrumb')
-    </section>
+    <!-- Content Wrapper. Contains page content -->
+    <div class="content-wrapper">
+      <!-- Content Header (Page header) -->
+      <section class="content-header">
+        <h1>
+          @yield('title')
+          <small>Control panel</small>
+        </h1>
+        @yield('breadcrumb')
+      </section>
 
-    <!-- Main content -->
-    <section class="content container-fluid">
-      @yield('content')
-    </section>
-    <!-- /.content -->
+      <!-- Main content -->
+      <section class="content container-fluid">
+        @yield('content')
+      </section>
+      <!-- /.content -->
+    </div>
+    <!-- /.content-wrapper -->
+
+    <!-- Main Footer -->
+    @include('admin.layouts.footer')
+
   </div>
-  <!-- /.content-wrapper -->
+  <!-- ./wrapper -->
 
-  <!-- Main Footer -->
-  @include('admin.layouts.footer')
+  <!-- REQUIRED JS SCRIPTS -->
 
-</div>
-<!-- ./wrapper -->
-
-<!-- REQUIRED JS SCRIPTS -->
-
-<!-- jQuery 3 -->
-<script src="{{ asset('AdminLTE/bower_components/jquery/dist/jquery.min.js') }}"></script>
-<!-- Bootstrap 3.3.7 -->
-<script src="{{ asset('AdminLTE/bower_components/bootstrap/dist/js/bootstrap.min.js') }}"></script>
-<!-- Sweet Alert 2 -->
-<script src="{{ asset('common/js/sweetalert2.min.js') }}"></script>
-<!-- Embed JS -->
-@yield('embed-js')
-<!-- AdminLTE App -->
-<script src="{{ asset('AdminLTE/dist/js/adminlte.min.js') }}"></script>
-<!-- Custom JS -->
-<script>
-  $(document).ready(function(){
-    @if(session('alert'))
+  <!-- jQuery 3 -->
+  <script src="{{ asset('AdminLTE/bower_components/jquery/dist/jquery.min.js') }}"></script>
+  <!-- Bootstrap 3.3.7 -->
+  <script src="{{ asset('AdminLTE/bower_components/bootstrap/dist/js/bootstrap.min.js') }}"></script>
+  <!-- Sweet Alert 2 -->
+  <script src="{{ asset('common/js/sweetalert2.min.js') }}"></script>
+  <!-- Embed JS -->
+  @yield('embed-js')
+  <!-- AdminLTE App -->
+  <script src="{{ asset('AdminLTE/dist/js/adminlte.min.js') }}"></script>
+  <!-- Custom JS -->
+  <script>
+    $(document).ready(function() {
+      @if(session('alert'))
       Swal.fire(
-        '{{ session('alert')['title'] }}',
-        '{{ session('alert')['content'] }}',
-        '{{ session('alert')['type'] }}'
+        '{{ session('
+        alert ')['
+        title '] }}',
+        '{{ session('
+        alert ')['
+        content '] }}',
+        '{{ session('
+        alert ')['
+        type '] }}'
       )
-    @endif
+      @endif
 
-    $('#logout').click(function(){
-      Swal.fire({
-        title: 'Đăng Xuất',
-        text: "Bạn có chắc muốn đăng xuất khỏi hệ thống!",
-        type: 'question',
-        confirmButtonColor: '#d33',
-        confirmButtonText: 'Đăng Xuất',
-      }).then((result) => {
-        if(result.value)
-          document.getElementById('logout-form').submit();
-      })
-    });
-  });
-
-  $(function() {
-    $('#sidebar-search-form').on('submit', function(e) {
-      e.preventDefault();
+      $('#logout').click(function() {
+        Swal.fire({
+          title: 'Đăng Xuất',
+          text: "Bạn có chắc muốn đăng xuất khỏi hệ thống!",
+          type: 'question',
+          confirmButtonColor: '#d33',
+          confirmButtonText: 'Đăng Xuất',
+        }).then((result) => {
+          if (result.value)
+            document.getElementById('logout-form').submit();
+        })
+      });
     });
 
-    $('.sidebar-menu li.active').data('lte.pushmenu.active', true);
+    $(function() {
+      $('#sidebar-search-form').on('submit', function(e) {
+        e.preventDefault();
+      });
 
-    $('#sidebar-search-form input').on('keyup', function() {
-      var term = $(this).val().trim();
+      $('.sidebar-menu li.active').data('lte.pushmenu.active', true);
 
-      if (term.length === 0) {
+      $('#sidebar-search-form input').on('keyup', function() {
+        var term = $(this).val().trim();
+
+        if (term.length === 0) {
+          $('.sidebar-menu li').each(function() {
+            $(this).show(0);
+            $(this).removeClass('active');
+            if ($(this).data('lte.pushmenu.active')) {
+              $(this).addClass('active');
+            }
+          });
+          return;
+        }
+
         $('.sidebar-menu li').each(function() {
-          $(this).show(0);
-          $(this).removeClass('active');
-          if ($(this).data('lte.pushmenu.active')) {
-            $(this).addClass('active');
+          if ($(this).text().toLowerCase().indexOf(term.toLowerCase()) === -1) {
+            $(this).hide(0);
+            $(this).removeClass('pushmenu-search-found', false);
+
+            if ($(this).is('.treeview')) {
+              $(this).removeClass('active');
+            }
+          } else {
+            $(this).show(0);
+            $(this).addClass('pushmenu-search-found');
+
+            if ($(this).is('.treeview')) {
+              $(this).addClass('active');
+            }
+
+            var parent = $(this).parents('li').first();
+            if (parent.is('.treeview')) {
+              parent.show(0);
+            }
+          }
+
+          if ($(this).is('.header')) {
+            $(this).show();
           }
         });
-        return;
-      }
 
-      $('.sidebar-menu li').each(function() {
-        if ($(this).text().toLowerCase().indexOf(term.toLowerCase()) === -1) {
-          $(this).hide(0);
-          $(this).removeClass('pushmenu-search-found', false);
-
-          if ($(this).is('.treeview')) {
-            $(this).removeClass('active');
-          }
-        } else {
-          $(this).show(0);
-          $(this).addClass('pushmenu-search-found');
-
-          if ($(this).is('.treeview')) {
-            $(this).addClass('active');
-          }
-
-          var parent = $(this).parents('li').first();
-          if (parent.is('.treeview')) {
-            parent.show(0);
-          }
-        }
-
-        if ($(this).is('.header')) {
-          $(this).show();
-        }
-      });
-
-      $('.sidebar-menu li.pushmenu-search-found.treeview').each(function() {
-        $(this).find('.pushmenu-search-found').show(0);
+        $('.sidebar-menu li.pushmenu-search-found.treeview').each(function() {
+          $(this).find('.pushmenu-search-found').show(0);
+        });
       });
     });
-  });
-</script>
-@yield('custom-js')
+  </script>
+  @yield('custom-js')
 </body>
+
 </html>
