@@ -43,7 +43,7 @@
   border-radius: 100%;
   border: 2px solid rgba(30,30,30,0.4);
   opacity: .1;
-  border-color: #256c20;
+  border: tomato solid 1px;
   opacity: .5;
 }
 .animated {
@@ -57,7 +57,7 @@
   animation-iteration-count: infinite;
 }
 .support-cart a.btn-support-cart .kenit-alo-circle {
-  border-color: #256c20;
+  border: tomato solid 1px;
 }
 .kenit-alo-circle-fill {
   width: 60px;

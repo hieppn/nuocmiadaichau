@@ -71,8 +71,8 @@
     </div>
   </div>
   <div class="footer-bottom">
-    <div class="copyright text-center">
-      CTY INOX ĐẠI CHÂU SẢN XUẤT XE NƯỚC MÍA
+    <div class="copyright text-center" style="font-weight: bold;">
+      CÔNG TY INOX ĐẠI CHÂU SẢN XUẤT XE NƯỚC MÍA
     </div>
   </div>
 </footer>

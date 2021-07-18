@@ -2,7 +2,7 @@
 @section('title', 'Trang Chủ')
 @section('content')
 <div class="site-home">
-  <section class="slide-header">
+  <!-- <section class="slide-header">
     <div id="carouselExample1" class="carousel slide z-depth-1-half" data-ride="carousel">
       <div class="carousel-inner">
         <div class="carousel-item active">
@@ -24,7 +24,7 @@
         <span class="sr-only">Tiếp</span>
       </a>
     </div>
-  </section>
+  </section> -->
   <section class="section-advertise">
     <div class="row">
       <div class="col-md-8">
