@@ -85,14 +85,14 @@ class RegisterController extends Controller
                 return redirect()->route('home_page')->with(['alert' => [
                     'type' => 'success',
                     'title' => 'Kích hoạt tài khoản thành công',
-                    'content' => 'Chúc mừng bạn đã kích hoạt tài khoản thành công. Bạn có thể đẳng nhập ngay bây giờ.'
+                    'content' => 'Chúc mừng bạn đã kích hoạt tài khoản thành công. Bạn có thể đăng nhập ngay bây giờ.'
                 ]]);
             }
             else {
                 return redirect()->route('home_page')->with(['alert' => [
                     'type' => 'warning',
                     'title' => 'Tài khoản đã được kích hoạt',
-                    'content' => 'Tài khoản đã được kích hoạt từ trước. Bạn có thể đẳng nhập ngày bây giờ.'
+                    'content' => 'Tài khoản đã được kích hoạt từ trước. Bạn có thể đăng nhập ngày bây giờ.'
                 ]]);
             }
         } else {

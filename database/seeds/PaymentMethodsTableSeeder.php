@@ -19,7 +19,7 @@ class PaymentMethodsTableSeeder extends Seeder
         ]);
         DB::table('payment_methods')->insert([
             'name' => 'Thanh Toán Momo',
-            'describe' =>  '0981536770',
+            'describe' =>  '0979396926',
             'created_at'    =>  date('Y-m-d H:i:s', strtotime('now')),
             'updated_at'    =>  date('Y-m-d H:i:s', strtotime('now')),
         ]);

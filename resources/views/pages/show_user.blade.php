@@ -128,15 +128,9 @@
 
     @if(session('alert'))
     Swal.fire(
-      '{{ session('
-      alert ')['
-      title '] }}',
-      '{{ session('
-      alert ')['
-      content '] }}',
-      '{{ session('
-      alert ')['
-      type '] }}'
+      "{{ session('alert')['title'] }}",
+      "{{ session('alert')['content'] }}",
+      "{{ session('alert')['type'] }}"
     )
     @endif
   });

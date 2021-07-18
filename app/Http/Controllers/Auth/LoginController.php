@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Auth;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
+use Illuminate\Support\Facades\Auth;
 
 class LoginController extends Controller
 {
@@ -64,7 +65,7 @@ class LoginController extends Controller
     protected function authenticated(Request $request, $user)
     {
         if(!$user->active) {
-            auth()->logout();
+            Auth::logout();
             return back()->withInput()->with(['alert' => [
                 'type' => 'warning',
                 'title' => 'Tài khoản chưa được kích hoạt!',
@@ -74,13 +75,13 @@ class LoginController extends Controller
             return redirect()->route('admin.dashboard')->with(['alert' => [
                 'type' => 'success',
                 'title' => 'Đăng nhập thành công',
-                'content' => 'Chào mừng bạn đến với trang quản trị Website LaptopStore'
+                'content' => 'Chào mừng bạn đến với trang quản trị Website Đại Châu'
             ]]);
         } else {
             return redirect()->route('home_page')->with(['alert' => [
                 'type' => 'success',
                 'title' => 'Đăng nhập thành công',
-                'content' => 'Chào mừng bạn đến với Website LaptopStore của chúng tôi'
+                'content' => 'Chào mừng bạn đến với Website Đại Châu của chúng tôi'
             ]]);
         }
     }

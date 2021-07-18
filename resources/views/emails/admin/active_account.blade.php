@@ -10,5 +10,5 @@ Kích hoạt tài khoản
 @endcomponent
 
 Thanks,<br>
-{{ config('app.name') }}
+Đại Châu
 @endcomponent

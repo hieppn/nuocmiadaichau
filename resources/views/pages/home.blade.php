@@ -42,7 +42,8 @@
               <a href="{{ route('post_page', ['id' => $post->id]) }}" title="{{ $post->title }}">
                 <div class="row">
                   <div class="col-md-4 col-sm-3 col-xs-3 col-xs-responsive">
-                    <div class="post-item-image" style="background-image: url('{{ Helper::get_image_post_url($post->image) }}'); padding-top: 50%;"></div>
+                    <div class="post-item-image" style="background-image: url('{{ Helper::get_image_post_url($post->image) }}'); padding-top: 50%;">
+                    </div>
                   </div>
                   <div class="col-md-8 col-sm-9 col-xs-9 col-xs-responsive">
                     <div class="post-item-content">
@@ -69,7 +70,9 @@
         <div class="item-product">
           <a href="{{ route('product_page', ['id' => $product->id]) }}" title="{{ $product->name }}">
             <div class="image-product" style="background-image: url('{{ Helper::get_image_product_url($product->image) }}');padding-top: 100%;">
-              {!! Helper::get_promotion_percent($product->product_detail->sale_price, $product->product_detail->promotion_price, $product->product_detail->promotion_start_date, $product->product_detail->promotion_end_date) !!}
+              {!! Helper::get_promotion_percent($product->product_detail->sale_price,
+              $product->product_detail->promotion_price, $product->product_detail->promotion_start_date,
+              $product->product_detail->promotion_end_date) !!}
             </div>
             <div class="content-product">
               <h3 class="title">{{ $product->name }}</h3>
@@ -77,7 +80,9 @@
                 {!! Helper::get_start_vote($product->rate) !!}
               </div>
               <div class="price">
-                {!! Helper::get_real_price($product->product_detail->sale_price, $product->product_detail->promotion_price, $product->product_detail->promotion_start_date, $product->product_detail->promotion_end_date) !!}
+                {!! Helper::get_real_price($product->product_detail->sale_price,
+                $product->product_detail->promotion_price, $product->product_detail->promotion_start_date,
+                $product->product_detail->promotion_end_date) !!}
               </div>
             </div>
           </a>
@@ -108,7 +113,9 @@
               <div class="row">
                 <div class="col-md-6 col-sm-6 col-xs-6">
                   <div class="image-product" style="background-image: url('{{ Helper::get_image_product_url($product->image) }}');padding-top: 100%;">
-                    {!! Helper::get_promotion_percent($product->product_detail->sale_price, $product->product_detail->promotion_price, $product->product_detail->promotion_start_date, $product->product_detail->promotion_end_date) !!}
+                    {!! Helper::get_promotion_percent($product->product_detail->sale_price,
+                    $product->product_detail->promotion_price, $product->product_detail->promotion_start_date,
+                    $product->product_detail->promotion_end_date) !!}
                   </div>
                   <div class="content-product">
                     <h3 class="title">{{ $product->name }}</h3>
@@ -116,7 +123,9 @@
                       {!! Helper::get_start_vote($product->rate) !!}
                     </div>
                     <div class="price">
-                      {!! Helper::get_real_price($product->product_detail->sale_price, $product->product_detail->promotion_price, $product->product_detail->promotion_start_date, $product->product_detail->promotion_end_date) !!}
+                      {!! Helper::get_real_price($product->product_detail->sale_price,
+                      $product->product_detail->promotion_price, $product->product_detail->promotion_start_date,
+                      $product->product_detail->promotion_end_date) !!}
                     </div>
                   </div>
                 </div>
@@ -150,7 +159,9 @@
               <div class="row">
                 <div class="col-md-12 col-sm-12 col-xs-12">
                   <div class="image-product" style="background-image: url('{{ Helper::get_image_product_url($product->image) }}');padding-top: 100%;">
-                    {!! Helper::get_promotion_percent($product->product_detail->sale_price, $product->product_detail->promotion_price, $product->product_detail->promotion_start_date, $product->product_detail->promotion_end_date) !!}
+                    {!! Helper::get_promotion_percent($product->product_detail->sale_price,
+                    $product->product_detail->promotion_price, $product->product_detail->promotion_start_date,
+                    $product->product_detail->promotion_end_date) !!}
                   </div>
                   <div class="content-product">
                     <h3 class="title">{{ $product->name }}</h3>
@@ -158,7 +169,9 @@
                       {!! Helper::get_start_vote($product->rate) !!}
                     </div>
                     <div class="price">
-                      {!! Helper::get_real_price($product->product_detail->sale_price, $product->product_detail->promotion_price, $product->product_detail->promotion_start_date, $product->product_detail->promotion_end_date) !!}
+                      {!! Helper::get_real_price($product->product_detail->sale_price,
+                      $product->product_detail->promotion_price, $product->product_detail->promotion_start_date,
+                      $product->product_detail->promotion_end_date) !!}
                     </div>
                   </div>
                 </div>
@@ -191,7 +204,6 @@
     </div>
   </section>
 </div>
-
 @endsection
 
 @section('css')
@@ -204,15 +216,6 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
 <script>
-  @if(session('alert')!=null)
-  Swal.fire('{{ session('
-    alert ')['
-    title '] }}', '{{ session('
-    alert ')['
-    content '] }}', '{{ session('
-    alert ')['
-    type '] }}')
-  @endif
   $(document).ready(function() {
     $("#slide-advertise").owlCarousel({
       items: 1,
@@ -268,4 +271,9 @@
     });
   });
 </script>
+@if(session('alert') != null)
+<script>
+  Swal.fire(title = "{{ session('alert')['title'] }}", content = "{{ session('alert')['content'] }}", type = "{{ session('alert')['type'] }}");
+</script>
+@endif
 @endsection

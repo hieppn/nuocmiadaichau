@@ -56,10 +56,10 @@ class ActiveAccountNotification extends Notification
         }
 
         return (new MailMessage)
-            ->greeting('Xin Chào'.$notifiable->name.'.')
-            ->subject('Active Account Notification')
-            ->line('Email này đã được liên kết với một tài khoản trên hệ thống Website LaptopStore. Vui lòng click vào nút bên dưới để kích hoạt.')
-            ->action('Active Account', route('active_account', ['token' => $this->token]));
+            ->greeting('Xin Chào '.$notifiable->name.'.')
+            ->subject('Thông báo kích hoạt tài khoản')
+            ->line('Email này đã được liên kết với một tài khoản trên hệ thống website của Công ty inox chuyên sản xuất máy ép mía Đại Châu. Vui lòng click vào nút bên dưới để kích hoạt.')
+            ->action('Kích hoạt', route('active_account', ['token' => $this->token]));
     }
 
     /**

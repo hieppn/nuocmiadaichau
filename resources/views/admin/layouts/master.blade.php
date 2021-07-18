@@ -94,11 +94,11 @@ scratch. This page gets rid of all links and provides the needed markup only.
 <!-- Custom JS -->
 <script>
   $(document).ready(function(){
-    @if(session('alert'))
+    @if(session('alert')!=null)
       Swal.fire(
-        '{{ session('alert')['title'] }}',
-        '{{ session('alert')['content'] }}',
-        '{{ session('alert')['type'] }}'
+        "{{ session('alert')['title'] }}",
+        "{{ session('alert')['content'] }}",
+        "{{ session('alert')['type'] }}"
       )
     @endif
 
