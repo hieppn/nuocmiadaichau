@@ -16,7 +16,7 @@
               </div>
               @foreach($data['advertises'] as $advertise)
               <div class="carousel-item">
-                <img class="d-block w-100" width="auto"src="{{ Helper::get_image_advertise_url($advertise->image) }}" title="{{$advertise->title}}">
+                <img class="d-block w-100" width="auto" src="{{ Helper::get_image_advertise_url($advertise->image) }}" title="{{$advertise->title}}">
               </div>
               @endforeach
             </div>
@@ -191,6 +191,7 @@
     </div>
   </section>
 </div>
+
 @endsection
 
 @section('css')
@@ -203,6 +204,15 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
 <script>
+  @if(isset(session('alert')))
+  Swal.fire('{{ session('
+    alert ')['
+    title '] }}', '{{ session('
+    alert ')['
+    content '] }}', '{{ session('
+    alert ')['
+    type '] }}')
+  @endif
   $(document).ready(function() {
     $("#slide-advertise").owlCarousel({
       items: 1,
@@ -256,20 +266,6 @@
       },
       navText: ['<i class="fas fa-angle-left"></i>', '<i class="fas fa-angle-right"></i>']
     });
-
-    @if(session('alert'))
-    Swal.fire(
-      '{{ session('
-      alert ')['
-      title '] }}',
-      '{{ session('
-      alert ')['
-      content '] }}',
-      '{{ session('
-      alert ')['
-      type '] }}'
-    )
-    @endif
   });
 </script>
 @endsection
