@@ -2,40 +2,34 @@
 @section('title', 'Trang Chủ')
 @section('content')
 <div class="site-home">
-  <!-- <section class="slide-header">
-    <div id="carouselExample1" class="carousel slide z-depth-1-half" data-ride="carousel">
-      <div class="carousel-inner">
-        <div class="carousel-item active">
-          <img class="d-block w-100" src="https://mdbootstrap.com/img/Photos/Slides/img%20(45).jpg" alt="First slide">
-        </div>
-        <div class="carousel-item">
-          <img class="d-block w-100" src="https://mdbootstrap.com/img/Photos/Slides/img%20(46).jpg" alt="Second slide">
-        </div>
-        <div class="carousel-item">
-          <img class="d-block w-100" src="https://mdbootstrap.com/img/Photos/Slides/img%20(47).jpg" alt="Third slide">
-        </div>
-      </div>
-      <a class="carousel-control-prev" href="#carouselExample1" role="button" data-slide="prev">
-        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-        <span class="sr-only">Sau</span>
-      </a>
-      <a class="carousel-control-next" href="#carouselExample1" role="button" data-slide="next">
-        <span class="carousel-control-next-icon" aria-hidden="true"></span>
-        <span class="sr-only">Tiếp</span>
-      </a>
-    </div>
-  </section> -->
   <section class="section-advertise">
     <div class="row">
       <div class="col-md-8">
-        <div class="content-advertise">
-          <div id="slide-advertise" class="owl-carousel">
-            @foreach($data['advertises'] as $advertise)
-            <div class="slide-advertise-inner" style="background-image: url('{{ Helper::get_image_advertise_url($advertise->image) }}');" data-dot="<button>{{ $advertise->title }}</button>"></div>
-            @endforeach
+        <section class="slide-header">
+          <div id="carouselExample1" class="carousel slide z-depth-1-half" data-ride="carousel">
+            <div class="carousel-inner">
+              <div class="carousel-item active">
+                <img class="d-block w-100" src="https://mdbootstrap.com/img/Photos/Slides/img%20(45).jpg" title="Đại Châu">
+              </div>
+              <div class="carousel-item">
+                <img class="d-block w-100" src="https://mdbootstrap.com/img/Photos/Slides/img%20(46).jpg" title="Hữu Hiệp">
+              </div>
+              @foreach($data['advertises'] as $advertise)
+              <div class="carousel-item">
+                <img class="d-block w-100" width="auto"src="{{ Helper::get_image_advertise_url($advertise->image) }}" title="{{$advertise->title}}">
+              </div>
+              @endforeach
+            </div>
+            <a class="carousel-control-prev" href="#carouselExample1" role="button" data-slide="prev">
+              <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+              <span class="sr-only">Sau</span>
+            </a>
+            <a class="carousel-control-next" href="#carouselExample1" role="button" data-slide="next">
+              <span class="carousel-control-next-icon" aria-hidden="true"></span>
+              <span class="sr-only">Tiếp</span>
+            </a>
           </div>
-          <div class="custom-dots-slide-advertises"></div>
-        </div>
+        </section>
       </div>
       <div class="col-md-4">
         <div class="new-posts">
