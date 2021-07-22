@@ -11,7 +11,6 @@
 |
 */
 
-
 Auth::routes();
 Route::get('active/{token}', 'Auth\RegisterController@activation')->name('active_account');
 

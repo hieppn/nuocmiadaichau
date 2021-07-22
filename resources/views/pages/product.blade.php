@@ -351,33 +351,18 @@
         .appendTo(".section-rating .rating-form form");
       return true;
     });
-    @if(session('vote_alert'))
-    scrollToxx();
-    Swal.fire(
-      '{{ session('
-      vote_alert ')['
-      title '] }}',
-      '{{ session('
-      vote_alert ')['
-      content '] }}',
-      '{{ session('
-      vote_alert ')['
-      type '] }}'
-    );
-    @endif
-    @if(session('alert'))
-    Swal.fire(
-      '{{ session('
-      alert ')['
-      title '] }}',
-      '{{ session('
-      alert ')['
-      content '] }}',
-      '{{ session('
-      alert ')['
-      type '] }}'
-    );
-    @endif
   });
+</script>
+@if(session('vote_alert')!==null)
+<script>
+  scrollToxx();
+  Swal.fire(title = "{{ session('vote_alert')['title'] }}", content = "{{ session('vote_alert')['content'] }}", type = "{{ session('vote_alert')['type'] }}");
+</script>
+@endif
+@if(session('alert')!=null)
+<script>
+   Swal.fire(title = "{{ session('alert')['title'] }}", content = "{{ session('alert')['content'] }}", type = "{{ session('alert')['type'] }}");
+</script>
+@endif
 </script>
 @endsection

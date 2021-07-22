@@ -7,7 +7,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Storage;
-
+use Kreait\Firebase\Factory;
 use App\User;
 use App\Models\Advertise;
 
@@ -129,12 +129,20 @@ class UserController extends Controller
         $user->address = $request->address;
 
         if($request->hasFile('avatar_image')){
-          $image = $request->file('avatar_image');
-          $image_name = time().'_'.$image->getClientOriginalName();
-          $image->storeAs('images/avatars',$image_name,'public');
-
+          $image_name = time() . uniqid() . '_' . $_FILES['avatar_image']['name'];
+          $factory = (new Factory)->withServiceAccount(env('FIREBASE_CREDENTIALS'), 'firebase_credential.json');
+          $storage = $factory->createStorage();
+          $bucket = $storage->getBucket('nuocmiasaigon-fc089.appspot.com');
+          $bucket->upload(
+            file_get_contents($_FILES['avatar_image']['tmp_name']),
+            [
+              'name' => $image_name,
+              'alt' => 'media'
+            ]
+          );
           if($user->avatar_image != NULL) {
-            Storage::disk('public')->delete('images/avatars/'.$user->avatar_image);
+            $object = $bucket->object($user->avatar_image);
+            $object->delete();
           }
 
           $user->avatar_image = $image_name;

@@ -16,10 +16,10 @@ class CreateProductVotesTable extends Migration
         Schema::create('product_votes', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->unsignedBigInteger('product_id');
-            $table->foreign('product_id')->references('id')->on('products');
+            $table->foreign('product_id')->references('id')->on('products')->onDelete('cascade');
             $table->unsignedBigInteger('user_id');
-            $table->foreign('user_id')->references('id')->on('users');
-            $table->float('rate', 2, 1);
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
+            $table->float('rate', 2, 1)->default(5);
             $table->string('content')->nullable();
             $table->timestamps();
         });

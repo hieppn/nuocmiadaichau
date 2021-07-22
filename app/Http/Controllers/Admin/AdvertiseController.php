@@ -1,12 +1,15 @@
 <?php
 
 namespace App\Http\Controllers\Admin;
-
+// require '../../../../vendor/autoload.php';
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Storage;
 use Google\Cloud\Storage\StorageClient;
+use Kreait\Firebase\ServiceAccount;
+use Kreait\Firebase\Factory;
+use Kreait\Laravel\Firebase\Facades\FirebaseStorage;
 use App\Models\Advertise;
 
 class AdvertiseController extends Controller
@@ -53,12 +56,19 @@ class AdvertiseController extends Controller
     $advertise->title = $request->title;
 
     if ($request->hasFile('image')) {
-      $image = $request->file('image');
-      $image_name = time() . '_' . $image->getClientOriginalName();
-      $image->storeAs('images/advertises', $image_name, 'public');
+      $image_name = time() . uniqid() . '_' . $_FILES['image']['name'];
+      $factory = (new Factory)->withServiceAccount(env('FIREBASE_CREDENTIALS'), 'firebase_credential.json');
+      $storage = $factory->createStorage();
+      $bucket = $storage->getBucket('nuocmiasaigon-fc089.appspot.com');
+      $bucket->upload(
+        file_get_contents($_FILES['image']['tmp_name']),
+        [
+          'name' => $image_name,
+          'alt' => 'media'
+        ]
+      );
       $advertise->image = $image_name;
     }
-
     $advertise->at_home_page = $request->at_home_page;
     $advertise->start_date = $start_date;
     $advertise->end_date = $end_date;
@@ -82,7 +92,11 @@ class AdvertiseController extends Controller
       $data['title'] = 'Thất Bại';
       $data['content'] = 'Bạn không thể xóa quảng cáo không tồn tại!';
     } else {
-      Storage::disk('public')->delete('images/advertises/' . $advertise->image);
+      $factory = (new Factory)->withServiceAccount(env('FIREBASE_CREDENTIALS'), 'firebase_credential.json');
+      $storage = $factory->createStorage();
+      $bucket = $storage->getBucket('nuocmiasaigon-fc089.appspot.com');
+      $object = $bucket->object($advertise->image);
+      $object->delete();
 
       $advertise->delete();
 
@@ -132,9 +146,17 @@ class AdvertiseController extends Controller
     $advertise->title = $request->title;
 
     if ($request->hasFile('image')) {
-      $image = $request->file('image');
-      $image_name = time() . '_' . $image->getClientOriginalName();
-      $image->storeAs('images/advertises', $image_name, 'public');
+      $image_name = time() . uniqid() . '_' . $_FILES['image']['name'];
+      $factory = (new Factory)->withServiceAccount(env('FIREBASE_CREDENTIALS'), 'firebase_credential.json');
+      $storage = $factory->createStorage();
+      $bucket = $storage->getBucket('nuocmiasaigon-fc089.appspot.com');
+      $bucket->upload(
+        file_get_contents($_FILES['image']['tmp_name']),
+        [
+          'name' => $image_name,
+          'alt' => 'media'
+        ]
+      );
       $advertise->image = $image_name;
     }
 

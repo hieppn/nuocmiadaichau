@@ -103,7 +103,7 @@
                     {{ $advertise->id }}
                   </td>
                   <td>
-                    <div style="background-image: url('{{ Helper::get_image_advertise_url($advertise->image) }}'); padding-top: 50%; background-size: contain; background-repeat: no-repeat; background-position: center;"></div>
+                    <div style="background-image: url('{{ Helper::get_image_advertise_url($advertise->image)}}'); padding-top: 50%; background-size: contain; background-repeat: no-repeat; background-position: center;"></div>
                   </td>
                   <td>
                     <a href="javascript:void(0);" class="text-left" title="{{ $advertise->title }}">{{ $advertise->title }}</a>

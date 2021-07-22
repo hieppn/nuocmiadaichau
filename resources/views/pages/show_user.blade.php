@@ -125,7 +125,6 @@
       },
       navText: ['<i class="fas fa-angle-left"></i>', '<i class="fas fa-angle-right"></i>']
     });
-
     @if(session('alert'))
     Swal.fire(
       "{{ session('alert')['title'] }}",

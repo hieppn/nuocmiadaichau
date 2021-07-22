@@ -54,28 +54,28 @@ class Helpers
   }
   public static function get_image_avatar_url($image = null) {
     if($image != null)
-      return asset('storage/images/avatars/'.$image);
+      return asset('https://firebasestorage.googleapis.com/v0/b/nuocmiasaigon-fc089.appspot.com/o/'.$image.'?alt=media');
     else
-      return asset('images/no_avatar.jpg');
+      return asset('https://firebasestorage.googleapis.com/v0/b/nuocmiasaigon-fc089.appspot.com/o/no_avatar.jpg?alt=media&token=24733ca9-2f0e-4c52-9b03-a8facc13ff85');
   }
   public static function get_image_product_url($image = null) {
     if($image != null)
-      return asset('storage/images/products/'.$image);
-    else
-      return asset('images/no_image.png');
-  }
+    return asset('https://firebasestorage.googleapis.com/v0/b/nuocmiasaigon-fc089.appspot.com/o/'.$image.'?alt=media');
+  else
+    return asset('https://firebasestorage.googleapis.com/v0/b/nuocmiasaigon-fc089.appspot.com/o/no_image.png?alt=media&token=6d439239-b79f-496c-bc68-373c767c48e2');
+}
   public static function get_image_advertise_url($image = null) {
     if($image != null)
-      return asset('storage/images/advertises/'.$image);
+      return asset('https://firebasestorage.googleapis.com/v0/b/nuocmiasaigon-fc089.appspot.com/o/'.$image.'?alt=media');
     else
-      return asset('images/no_image.png');
+      return asset('https://firebasestorage.googleapis.com/v0/b/nuocmiasaigon-fc089.appspot.com/o/no_image.png?alt=media&token=6d439239-b79f-496c-bc68-373c767c48e2');
   }
   public static function get_image_post_url($image = null) {
     if($image != null)
-      return asset('storage/images/posts/'.$image);
-    else
-      return asset('images/no_image.png');
-  }
+    return asset('https://firebasestorage.googleapis.com/v0/b/nuocmiasaigon-fc089.appspot.com/o/'.$image.'?alt=media');
+  else
+    return asset('https://firebasestorage.googleapis.com/v0/b/nuocmiasaigon-fc089.appspot.com/o/no_image.png?alt=media');
+}
 
   public static function check_active($array_route) {
     $name_route = request()->route()->getName();
