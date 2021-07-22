@@ -442,7 +442,7 @@ class ProductController extends Controller
 
     if ($request->hasFile('image')) {
       $image_name = time() . uniqid() . '_' . $_FILES['image']['name'];
-      $factory = (new Factory)->withServiceAccount(env('FIREBASE_CREDENTIALS'), 'firebase_credential.json');
+      $factory = (new Factory)->withServiceAccount(env('FIREBASE_CREDENTIALS'), __DIR__.'firebase_credential.json');
       $storage = $factory->createStorage();
       $bucket = $storage->getBucket('nuocmiasaigon-fc089.appspot.com');
       $bucket->upload(
