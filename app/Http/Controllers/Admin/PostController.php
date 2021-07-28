@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Auth;
+use Kreait\Firebase\Factory;
 
 use App\Models\Post;
 
@@ -90,9 +91,17 @@ class PostController extends Controller
     $post->user_id = Auth::user()->id;
 
     if($request->hasFile('image')){
-      $image = $request->file('image');
-      $image_name = time().'_'.$image->getClientOriginalName();
-      $image->storeAs('images/posts',$image_name,'public');
+      $image_name = time() .'_'. uniqid() . '_' . $_FILES['image']['name'];
+      $factory = (new Factory)->withServiceAccount(base_path() . '/' . 'firebase_credential.json');
+      $storage = $factory->createStorage();
+      $bucket = $storage->getBucket('nuocmiasaigon-fc089.appspot.com');
+      $bucket->upload(
+        file_get_contents($_FILES['image']['tmp_name']),
+        [
+          'name' => $image_name,
+          'alt' => 'media'
+        ]
+      );
       $post->image = $image_name;
     }
 
@@ -115,7 +124,11 @@ class PostController extends Controller
       $data['title'] = 'Thất Bại';
       $data['content'] = 'Bạn không thể xóa bài viết không tồn tại!';
     } else {
-      Storage::disk('public')->delete('images/posts/' . $post->image);
+      $factory = (new Factory)->withServiceAccount(base_path() . '/' . 'firebase_credential.json');
+      $storage = $factory->createStorage();
+      $bucket = $storage->getBucket('nuocmiasaigon-fc089.appspot.com');
+      $object = $bucket->object($post->image);
+      $object->delete();
       if($post->content != null) {
         $dom = new \DomDocument();
 
@@ -220,10 +233,17 @@ class PostController extends Controller
     $post->content = $content;
 
     if($request->hasFile('image')){
-      $image = $request->file('image');
-      $image_name = time().'_'.$image->getClientOriginalName();
-      $image->storeAs('images/posts',$image_name,'public');
-      Storage::disk('public')->delete('images/posts/' . $post->image);
+      $image_name = time() .'_'. uniqid() . '_' . $_FILES['image']['name'];
+      $factory = (new Factory)->withServiceAccount(base_path() . '/' . 'firebase_credential.json');
+      $storage = $factory->createStorage();
+      $bucket = $storage->getBucket('nuocmiasaigon-fc089.appspot.com');
+      $bucket->upload(
+        file_get_contents($_FILES['image']['tmp_name']),
+        [
+          'name' => $image_name,
+          'alt' => 'media'
+        ]
+      );
       $post->image = $image_name;
     }
 
