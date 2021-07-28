@@ -207,7 +207,7 @@ class ProductController extends Controller
 
     if ($request->hasFile('image')) {
       $image_name = time() . uniqid() . '_' . $_FILES['image']['name'];
-      $factory = (new Factory)->withServiceAccount(env('FIREBASE_CREDENTIALS'), 'firebase_credential.json');
+      $factory = (new Factory)->withServiceAccount(base_path() . '/' . 'firebase_credential.json');
       $storage = $factory->createStorage();
       $bucket = $storage->getBucket('nuocmiasaigon-fc089.appspot.com');
       $bucket->upload(
@@ -271,7 +271,7 @@ class ProductController extends Controller
         }
 
         $new_product_detail->save();
-        $factory = (new Factory)->withServiceAccount(env('FIREBASE_CREDENTIALS'), 'firebase_credential.json');
+        $factory = (new Factory)->withServiceAccount(base_path() . '/' . 'firebase_credential.json');
         $storage = $factory->createStorage();
         $bucket = $storage->getBucket('nuocmiasaigon-fc089.appspot.com');
         foreach ($request->file('product_details')[$key]['images'] as $image) {
@@ -442,7 +442,7 @@ class ProductController extends Controller
 
     if ($request->hasFile('image')) {
       $image_name = time() . uniqid() . '_' . $_FILES['image']['name'];
-      $factory = (new Factory)->withServiceAccount(env('FIREBASE_CREDENTIALS'), __DIR__.'firebase_credential.json');
+      $factory = (new Factory)->withServiceAccount(env('FIREBASE_CREDENTIALS'), __DIR__ . 'firebase_credential.json');
       $storage = $factory->createStorage();
       $bucket = $storage->getBucket('nuocmiasaigon-fc089.appspot.com');
       $bucket->upload(
@@ -539,7 +539,7 @@ class ProductController extends Controller
     }
 
     if ($request->has('product_details')) {
-      $factory = (new Factory)->withServiceAccount(env('FIREBASE_CREDENTIALS'), 'firebase_credential.json');
+      $factory = (new Factory)->withServiceAccount(base_path() . '/' . 'firebase_credential.json');
       $storage = $factory->createStorage();
       $bucket = $storage->getBucket('nuocmiasaigon-fc089.appspot.com');
       foreach ($request->product_details as $key => $product_detail) {
@@ -589,7 +589,7 @@ class ProductController extends Controller
     }
 
     if ($request->file('old_product_details') != null) {
-      $factory = (new Factory)->withServiceAccount(env('FIREBASE_CREDENTIALS'), 'firebase_credential.json');
+      $factory = (new Factory)->withServiceAccount(base_path() . '/' . 'firebase_credential.json');
       $storage = $factory->createStorage();
       $bucket = $storage->getBucket('nuocmiasaigon-fc089.appspot.com');
       foreach ($request->file('old_product_details') as $key => $images) {
@@ -650,7 +650,7 @@ class ProductController extends Controller
     } else {
 
       if ($product_detail->import_quantity == $product_detail->quantity) {
-        $factory = (new Factory)->withServiceAccount(env('FIREBASE_CREDENTIALS'), 'firebase_credential.json');
+        $factory = (new Factory)->withServiceAccount(base_path() . '/' . 'firebase_credential.json');
         $storage = $factory->createStorage();
         $bucket = $storage->getBucket('nuocmiasaigon-fc089.appspot.com');
         foreach ($product_detail->product_images as $image) {
@@ -675,7 +675,7 @@ class ProductController extends Controller
   public function delete_image(Request $request)
   {
     $image = ProductImage::find($request->key);
-    $factory = (new Factory)->withServiceAccount(env('FIREBASE_CREDENTIALS'), 'firebase_credential.json');
+    $factory = (new Factory)->withServiceAccount(base_path() . '/' . 'firebase_credential.json');
     $storage = $factory->createStorage();
     $bucket = $storage->getBucket('nuocmiasaigon-fc089.appspot.com');
     $object = $bucket->object($image->image_name);
