@@ -92,7 +92,7 @@ class AdvertiseController extends Controller
       $data['title'] = 'Thất Bại';
       $data['content'] = 'Bạn không thể xóa quảng cáo không tồn tại!';
     } else {
-      $factory = (new Factory)->withServiceAccount(env('FIREBASE_CREDENTIALS'), 'firebase_credential.json');
+      $factory = (new Factory)->withServiceAccount('firebase_credential.json');
       $storage = $factory->createStorage();
       $bucket = $storage->getBucket('nuocmiasaigon-fc089.appspot.com');
       $object = $bucket->object($advertise->image);
