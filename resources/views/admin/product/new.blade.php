@@ -174,7 +174,7 @@
   </div>
   <div class="box box-primary">
     <div class="box-header with-border">
-      <h3 class="box-title">Thông Tin Mầu Sắc Và Giá Sản Phẩm</h3>
+      <h3 class="box-title">Thông Tin Mẫu Mã Và Giá Sản Phẩm</h3>
       <div class="box-tools">
         <!-- This will cause the box to collapse when clicked -->
         <button class="btn btn-box-tool" data-widget="collapse" data-toggle="tooltip" title="Collapse"><i class="fa fa-minus"></i></button>
@@ -184,7 +184,7 @@
       <div id="product-details"></div>
     </div>
     <div class="text-center box-footer">
-      <button class="add btn btn-success"><i class="fa fa-plus" aria-hidden="true"></i> Thêm Mầu Sắc Sản Phẩm</button>
+      <button class="add btn btn-success"><i class="fa fa-plus" aria-hidden="true"></i> Thêm Mẫu Mã Sản Phẩm</button>
     </div>
   </div>
   <div class="nav-tabs-custom">
@@ -533,7 +533,7 @@
       <div class="row">
         <div class="col-md-4">
           <div class="form-group">
-            <label for="color_{?}">Mầu Sắc <span class="text-red">*</span></label>
+            <label for="color_{?}">Mẫu Mã <span class="text-red">*</span></label>
             <input type="text" name="product_details[{?}][design]" class="form-control color" id="design_{?}" placeholder="Mẫu mã" required autocomplete="off">
           </div>
         </div>
