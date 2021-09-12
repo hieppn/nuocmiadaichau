@@ -47,12 +47,12 @@
             @foreach($cart->items as $key => $item)
             <div class="item product-{{ $key }}">
               <div class="image-product">
-                <a href="{{ route('product_page', ['id' => $item['item']->product->id]) }}" target="_blank" title="{{ $item['item']->product->name . ' - ' . $item['item']->color }}">
+                <a href="{{ route('product_page', ['id' => $item['item']->product->id]) }}" target="_blank" title="{{ $item['item']->product->name . ' - ' . $item['item']->design }}">
                   <img src="{{ Helper::get_image_product_url($item['item']->product->image) }}">
                 </a>
               </div>
               <div class="info-product">
-                <div class="name"><a href="{{ route('product_page', ['id' => $item['item']->product->id]) }}" target="_blank" title="{{ $item['item']->product->name . ' - ' . $item['item']->color }}">{{ $item['item']->product->name . ' - ' . $item['item']->color }}</a></div>
+                <div class="name"><a href="{{ route('product_page', ['id' => $item['item']->product->id]) }}" target="_blank" title="{{ $item['item']->product->name . ' - ' . $item['item']->design }}">{{ $item['item']->product->name . ' - ' . $item['item']->design }}</a></div>
                 <div class="price">{!! Helper::get_real_price($item['item']->sale_price, $item['item']->promotion_price, $item['item']->promotion_start_date, $item['item']->promotion_end_date) !!}</div>
                 <div class="quantity-block">
                   <div class="input-group-btn">

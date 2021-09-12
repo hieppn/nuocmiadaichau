@@ -17,19 +17,18 @@ class CreateProductsTable extends Migration
             $table->bigIncrements('id');
             $table->unsignedBigInteger('producer_id');
             $table->foreign('producer_id')->references('id')->on('producers')->onDelete('cascade');
-
             $table->string('name');
             $table->string('image');
             $table->string('sku_code');
-            $table->string('monitor')->default('Đang cập nhật...');
-            $table->string('front_camera')->default('Đang cập nhật...');
-            $table->string('rear_camera')->default('Đang cập nhật...');
-            $table->string('CPU')->default('Đang cập nhật...');
-            $table->string('GPU')->default('Đang cập nhật...');
-            $table->integer('RAM')->default(0);
-            $table->integer('ROM')->default(0);
-            $table->string('OS')->default('Đang cập nhật...');
-            $table->string('pin')->default('Đang cập nhật...');
+            $table->string('productivity')->default('Đang cập nhật...');
+            $table->string('vol')->default('Đang cập nhật...');
+            $table->string('wat')->default('Đang cập nhật...');
+            $table->string('bearings')->default('Đang cập nhật...');
+            $table->string('speed')->default('Đang cập nhật...');
+            $table->string('weight')->default('Đang cập nhật...');
+            $table->string('size')->default('Đang cập nhật...');
+            $table->string('model')->default('Đang cập nhật...');
+            $table->string('insurance')->default('Đang cập nhật...');
             $table->longText('information_details')->nullable();
             $table->longText('product_introduction')->nullable();
             $table->float('rate', 2, 1)->default(5);

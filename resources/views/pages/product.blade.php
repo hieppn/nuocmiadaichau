@@ -91,7 +91,7 @@
                       @endforeach
                     </div>
                     <div class="color-product">
-                      <div class="title">Màu sắc:</div>
+                      <div class="title">Mẫu mã:</div>
                       <div class="select-color">
                         <div class="row">
                           @foreach($data['product_details'] as $key => $product)
@@ -103,7 +103,7 @@
                                 @else
                                 <div class="image-color"><img src="{{ Helper::get_image_product_url('not-image.jpg') }}"></div>
                                 @endif
-                                <div class="image-name">{{ $product->color }}</div>
+                                <div class="image-name">{{ $product->design }}</div>
                               </div>
                               @if($product->quantity <= 0) <div class="crossed-out">
                             </div>
@@ -251,15 +251,15 @@
                 </div>
                 <div class="infomation-content">
                   <ul>
-                    <li><label>Màn Hình:</label>{{ $data['product']->monitor ?: 'Đang Cập Nhật...' }}</li>
-                    <li><label>Camera:</label>{{ $data['product']->front_camera ?: 'Đang Cập Nhật...' }}</li>
-                    <li><label>Kích Thước:</label>{{ $data['product']->rear_camera ?: 'Đang Cập Nhật...' }}</li>
-                    <li><label>Ram:</label>{{ $data['product']->RAM != 0 ? $data['product']->RAM.' GB' : 'Đang Cập Nhật...' }}</li>
-                    <li><label>Bộ Nhớ Trong:</label>{{ $data['product']->ROM != 0 ? $data['product']->ROM.' GB' : 'Đang Cập Nhật...' }}</li>
-                    <li><label>CPU:</label>{{ $data['product']->CPU ?: 'Đang Cập Nhật...' }}</li>
-                    <li><label>GPU:</label>{{ $data['product']->GPU ?: 'Đang Cập Nhật...' }}</li>
-                    <li><label>Dung Lượng Pin:</label>{{ $data['product']->pin ?: 'Đang Cập Nhật...' }}</li>
-                    <li><label>Hệ Điều Hành:</label>{{ $data['product']->OS ?: 'Đang Cập Nhật...' }}</li>
+                    <li><label>Năng suất:</label>{{ $data['product']->monitor ?: 'Đang Cập Nhật...' }}</li>
+                    <li><label>Điện áp:</label>{{ $data['product']->vol ?: 'Đang Cập Nhật...' }}</li>
+                    <li><label>Công suất:</label>{{ $data['product']->wat ?: 'Đang Cập Nhật...' }}</li>
+                    <li><label>Trọng lượng:</label>{{ $data['product']->weight ?: 'Đang Cập Nhật...' }}</li>
+                    <li><label>Kích thước:</label>{{ $data['product']->size ?: 'Đang Cập Nhật...' }}</li>
+                    <li><label>Bạc đạn:</label>{{ $data['product']->bearings ?: 'Đang Cập Nhật...' }}</li>
+                    <li><label>Tốc độ quay:</label>{{ $data['product']->speed ?: 'Đang Cập Nhật...' }}</li>
+                    <li><label>Bảo hành:</label>{{ $data['product']->insurance ?: 'Đang Cập Nhật...' }}</li>
+                    <li><label>Model:</label>{{ $data['product']->model ?: 'Đang Cập Nhật...' }}</li>
                   </ul>
                 </div>
                 <div class="more-infomation">

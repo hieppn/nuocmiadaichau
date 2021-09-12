@@ -18,8 +18,8 @@
         <ul class="list-item-cart">
           @foreach($cart->items as $key => $item)
             <li class="item productid-{{$key}}">
-              <a class="product-image" href="{{ route('product_page', ['id' => $item['item']->product->id]) }}" title="{{ $item['item']->product->name . ' - ' . $item['item']->color }}">
-                <img alt="{{ $item['item']->product->name . ' - ' . $item['item']->color }}" src="{{ Helper::get_image_product_url($item['item']->product->image) }}" width="80">
+              <a class="product-image" href="{{ route('product_page', ['id' => $item['item']->product->id]) }}" title="{{ $item['item']->product->name . ' - ' . $item['item']->design }}">
+                <img alt="{{ $item['item']->product->name . ' - ' . $item['item']->design }}" src="{{ Helper::get_image_product_url($item['item']->product->image) }}" width="80">
               </a>
               <div class="detail-item">
                 <div class="product-details">
@@ -27,7 +27,7 @@
                     <i class="fas fa-times"></i>
                   </a>
                   <p class="product-name">
-                    <a href="{{ route('product_page', ['id' => $item['item']->product->id]) }}" title="{{ $item['item']->product->name . ' - ' . $item['item']->color }}">{{ $item['item']->product->name . ' - ' . $item['item']->color }}
+                    <a href="{{ route('product_page', ['id' => $item['item']->product->id]) }}" title="{{ $item['item']->product->name . ' - ' . $item['item']->design }}">{{ $item['item']->product->name . ' - ' . $item['item']->design }}
                     </a>
                   </p>
                 </div>

@@ -170,7 +170,7 @@
                         <th style="text-align: center; vertical-align: middle;">STT</th>
                         <th style="vertical-align: middle;">Mã Sản Phẩm</th>
                         <th style="vertical-align: middle;">Tên Sản Phẩm</th>
-                        <th style="vertical-align: middle;">Mầu Sắc</th>
+                        <th style="vertical-align: middle;">Mẫu Mã</th>
                         <th style="vertical-align: middle;">Đơn Hàng</th>
                         <th style="vertical-align: middle;">Ngày Xuất</th>
                         <th style="text-align: center; vertical-align: middle;">Số Lượng</th>
@@ -190,7 +190,7 @@
                           <td style="text-align: center; vertical-align: middle;">{{ $key + 1 }}</td>
                           <td style="vertical-align: middle;">{{ '#'.$order_detail->product_detail->product->sku_code }}</td>
                           <td style="vertical-align: middle;">{{ $order_detail->product_detail->product->name }}</td>
-                          <td style="vertical-align: middle;">{{ $order_detail->product_detail->color }}</td>
+                          <td style="vertical-align: middle;">{{ $order_detail->product_detail->design }}</td>
                           <td style="vertical-align: middle;">{{ '#'.$order_detail->order->order_code }}</td>
                           <td style="vertical-align: middle;">{{ date_format($order_detail->created_at, 'd/m/Y') }}</td>
                           <td style="text-align: center; vertical-align: middle;">{{ $order_detail->quantity }}</td>
@@ -438,7 +438,7 @@
                 '<td style="text-align: center; vertical-align: middle;">' + (key + 1) +'</td>' +
                 '<td style="vertical-align: middle;"> #' + value.product_detail.product.sku_code + '</td>' +
                 '<td style="vertical-align: middle;">' + value.product_detail.product.name + '</td>' +
-                '<td style="vertical-align: middle;">' + value.product_detail.color + '</td>' +
+                '<td style="vertical-align: middle;">' + value.product_detail.design + '</td>' +
                 '<td style="vertical-align: middle;"> #' + value.order.order_code + '</td>' +
                 '<td style="vertical-align: middle;">' + formatDate(value.created_at) + '</td>' +
                 '<td style="text-align: center; vertical-align: middle;">' + value.quantity + '</td>' +

@@ -97,7 +97,7 @@ class UserController extends Controller
         $query->select('id', 'order_id', 'product_detail_id', 'quantity', 'price')
         ->with([
           'product_detail' => function ($query) {
-            $query->select('id', 'product_id', 'color')
+            $query->select('id', 'product_id', 'design')
             ->with([
               'product' => function ($query) {
                 $query->select('id', 'name', 'image', 'sku_code');

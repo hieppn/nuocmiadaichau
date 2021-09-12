@@ -17,7 +17,7 @@ class CreateProductDetailsTable extends Migration
             $table->bigIncrements('id');
             $table->unsignedBigInteger('product_id');
             $table->foreign('product_id')->references('id')->on('products')->onDelete('cascade');
-            $table->string('vip');
+            $table->string('design');
             $table->integer('import_quantity');
             $table->integer('quantity');
             $table->integer('import_price');

@@ -72,9 +72,9 @@ class StatisticController extends Controller
           $query->select('id', 'order_code');
         },
         'product_detail' =>function($query) {
-          $query->select('id', 'product_id', 'color', 'import_price')->with([
+          $query->select('id', 'product_id', 'design', 'import_price')->with([
             'product' => function($query) {
-              $query->select('id', 'producer_id', 'name', 'sku_code', 'OS')->with([
+              $query->select('id', 'producer_id', 'name', 'sku_code', 'model')->with([
                 'producer' => function($query) {
                   $query->select('id', 'name');
                 }
@@ -159,9 +159,9 @@ class StatisticController extends Controller
             $query->select('id', 'order_code');
           },
           'product_detail' =>function($query) {
-            $query->select('id', 'product_id', 'color', 'import_price')->with([
+            $query->select('id', 'product_id', 'design', 'import_price')->with([
               'product' => function($query) {
-                $query->select('id', 'producer_id', 'name', 'sku_code', 'OS')->with([
+                $query->select('id', 'producer_id', 'name', 'sku_code', 'model')->with([
                   'producer' => function($query) {
                     $query->select('id', 'name');
                   }
@@ -245,9 +245,9 @@ class StatisticController extends Controller
             $query->select('id', 'order_code');
           },
           'product_detail' =>function($query) {
-            $query->select('id', 'product_id', 'color', 'import_price')->with([
+            $query->select('id', 'product_id', 'design', 'import_price')->with([
               'product' => function($query) {
-                $query->select('id', 'producer_id', 'name', 'sku_code', 'OS')->with([
+                $query->select('id', 'producer_id', 'name', 'sku_code', 'model')->with([
                   'producer' => function($query) {
                     $query->select('id', 'name');
                   }
@@ -330,9 +330,9 @@ class StatisticController extends Controller
             $query->select('id', 'order_code');
           },
           'product_detail' =>function($query) {
-            $query->select('id', 'product_id', 'color', 'import_price')->with([
+            $query->select('id', 'product_id', 'design', 'import_price')->with([
               'product' => function($query) {
-                $query->select('id', 'producer_id', 'name', 'sku_code', 'OS')->with([
+                $query->select('id', 'producer_id', 'name', 'sku_code', 'model')->with([
                   'producer' => function($query) {
                     $query->select('id', 'name');
                   }
@@ -412,9 +412,9 @@ class StatisticController extends Controller
             $query->select('id', 'order_code');
           },
           'product_detail' =>function($query) {
-            $query->select('id', 'product_id', 'color', 'import_price')->with([
+            $query->select('id', 'product_id', 'design', 'import_price')->with([
               'product' => function($query) {
-                $query->select('id', 'producer_id', 'name', 'sku_code', 'OS')->with([
+                $query->select('id', 'producer_id', 'name', 'sku_code', 'model')->with([
                   'producer' => function($query) {
                     $query->select('id', 'name');
                   }

@@ -131,21 +131,15 @@
                 </div>
                 <div class="col-md-6 col-sm-6 col-xs-6" style="display: flex;">
                   <div class="product-details">
-                    <p><strong><i class="fas fa-tv"></i> Màn Hình: </strong>{{ $product->monitor }}</p>
-                    <p><strong><i class="fas fa-camera-retro"></i> Camera: </strong>{{ $product->front_camera }}</p>
-                    <p><strong><i class="fas fa-laptop"></i> Kích Thước: </strong>{{ $product->rear_camera }}</p>
-                    <p><strong><i class="fas fa-microchip"></i> CPU: </strong>{{ $product->CPU }}</p>
-                    <p><strong><i class="fas fa-microchip"></i>GPU: </strong>{{ $product->GPU }}</p>
-                    <p><strong><i class="fas fa-hdd"></i> RAM: </strong>{{ $product->RAM }}GB</p>
-                    <p><strong><i class="fas fa-hdd"></i> Bộ Nhớ Trong: </strong>{{ $product->ROM }}GB</p>
-                    @if(Str::is('*Linux*', $product->OS_version))
-                    <p><strong><i class="fab fa-android"></i> HĐH: </strong>{{ $product->OS_version }}</p>
-                    @elseif(Str::is('*MacOS*', $product->OS_version))
-                    <p><strong><i class="fab fa-apple"></i> HĐH: </strong>{{ $product->OS_version }}</p>
-                    @elseif(Str::is('*Windows*', $product->OS_version))
-                    <p><strong><i class="fab fa-windows"></i> HĐH: </strong>{{ $product->OS_version }}</p>
-                    @endif
-                    <p><strong><i class="fas fa-battery-full"></i> Dung Lượng PIN: </strong>{{ $product->pin }}</p>
+                    <p><strong><i class="fas fa-microchip"></i> Năng suất: </strong>{{ $product->productivity }}</p>
+                    <p><strong><i class="fas fa-microchip"></i> Điện áp: </strong>{{ $product->vol }}</p>
+                    <p><strong><i class="fas fa-microchip"></i> Công suất: </strong>{{ $product->wat }}</p>
+                    <p><strong><i class="fas fa-microchip"></i> Bạc đạn: </strong>{{ $product->bearings }}</p>
+                    <p><strong><i class="fas fa-microchip"></i> Tốc độ quay: </strong>{{ $product->speed }}</p>
+                    <p><strong><i class="fas fa-microchip"></i> Trọng lượng: </strong>{{ $product->weight }}</p>
+                    <p><strong><i class="fas fa-microchip"></i> Kích thước: </strong>{{ $product->size }}GB</p>
+                    <p><strong><i class="fas fa-microchip"></i> Model: </strong>{{ $product->model }}</p>
+                    <p><strong><i class="fas fa-microchip"></i> Bảo hành: </strong>{{ $product->insurance }}</p>
                   </div>
                 </div>
               </div>
@@ -177,21 +171,15 @@
                 </div>
                 <div class="col-md-12 col-sm-12 col-xs-12 animate">
                   <div class="product-details">
-                    <p><strong><i class="fas fa-tv"></i> Màn Hình: </strong>{{ $product->monitor }}</p>
-                    <p><strong><i class="fas fa-camera-retro"></i> Camera: </strong>{{ $product->front_camera }}</p>
-                    <p><strong><i class="fas fa-laptop"></i> Kích Thước: </strong>{{ $product->rear_camera }}</p>
-                    <p><strong><i class="fas fa-microchip"></i> CPU: </strong>{{ $product->CPU }}</p>
-                    <p><strong><i class="fas fa-microchip"></i>GPU: </strong>{{ $product->GPU }}</p>
-                    <p><strong><i class="fas fa-hdd"></i> RAM: </strong>{{ $product->RAM }}GB</p>
-                    <p><strong><i class="fas fa-hdd"></i> Bộ Nhớ Trong: </strong>{{ $product->ROM }}GB</p>
-                    @if(Str::is('*Linux*', $product->OS_version))
-                    <p><strong><i class="fab fa-android"></i> HĐH: </strong>{{ $product->OS_version }}</p>
-                    @elseif(Str::is('*MacOS*', $product->OS_version))
-                    <p><strong><i class="fab fa-apple"></i> HĐH: </strong>{{ $product->OS_version }}</p>
-                    @elseif(Str::is('*Windows*', $product->OS_version))
-                    <p><strong><i class="fab fa-windows"></i> HĐH: </strong>{{ $product->OS_version }}</p>
-                    @endif
-                    <p><strong><i class="fas fa-battery-full"></i> Dung Lượng PIN: </strong>{{ $product->pin }}</p>
+                  <p><strong><i class="fas fa-microchip"></i> Năng suất: </strong>{{ $product->productivity }}</p>
+                    <p><strong><i class="fas fa-microchip"></i> Điện áp: </strong>{{ $product->vol }}</p>
+                    <p><strong><i class="fas fa-microchip"></i> Công suất: </strong>{{ $product->wat }}</p>
+                    <p><strong><i class="fas fa-microchip"></i> Bạc đạn: </strong>{{ $product->bearings }}</p>
+                    <p><strong><i class="fas fa-microchip"></i> Tốc độ quay: </strong>{{ $product->speed }}</p>
+                    <p><strong><i class="fas fa-microchip"></i> Trọng lượng: </strong>{{ $product->weight }}</p>
+                    <p><strong><i class="fas fa-microchip"></i> Kích thước: </strong>{{ $product->size }}GB</p>
+                    <p><strong><i class="fas fa-microchip"></i> Model: </strong>{{ $product->model }}</p>
+                    <p><strong><i class="fas fa-microchip"></i> Bảo hành: </strong>{{ $product->insurance }}</p>
                   </div>
                 </div>
               </div>

@@ -68,7 +68,7 @@
             <div class="col-md-5 col-sm-6 col-xs-6">
               <div id="search-input" class="input-group">
                 <span class="input-group-addon"><i class="fa fa-search" aria-hidden="true"></i></span>
-                <input type="text" class="form-control" placeholder="tìm....">
+                <input type="text" class="form-control" placeholder="Tìm....">
               </div>
             </div>
             <div class="col-md-7 col-sm-6 col-xs-6">

@@ -22,8 +22,8 @@ class CartController extends Controller
 
     $product = ProductDetail::where('id',$request->id)
     ->with(['product' => function($query) {
-      $query->select('id', 'name', 'image', 'sku_code', 'RAM', 'ROM');
-    }])->select('id', 'product_id', 'color', 'quantity', 'sale_price', 'promotion_price', 'promotion_start_date', 'promotion_end_date')->first();
+      $query->select('id', 'name', 'image', 'sku_code', 'weight', 'size');
+    }])->select('id', 'product_id', 'design', 'quantity', 'sale_price', 'promotion_price', 'promotion_start_date', 'promotion_end_date')->first();
 
     if(!$product) {
       $data['msg'] = 'Product Not Found!';
@@ -128,8 +128,8 @@ class CartController extends Controller
         $payment_methods = PaymentMethod::select('id', 'name', 'describe')->get();
         $product = ProductDetail::where('id',$request->id)
           ->with(['product' => function($query) {
-            $query->select('id', 'name', 'image', 'sku_code', 'RAM', 'ROM');
-          }])->select('id', 'product_id', 'color', 'quantity', 'sale_price', 'promotion_price', 'promotion_start_date', 'promotion_end_date')->first();
+            $query->select('id', 'name', 'image', 'sku_code', 'weight', 'size');
+          }])->select('id', 'product_id', 'design', 'quantity', 'sale_price', 'promotion_price', 'promotion_start_date', 'promotion_end_date')->first();
         $cart = new Cart(NULL);
         if(!$cart->add($product, $product->id, $request->qty)) {
           return back()->with(['alert' => [

@@ -149,7 +149,7 @@
                     </div>
                     <div class="info">
                       <div class="name">{{ $item['item']->product->name }}</div>
-                      <div class="color">{{ $item['item']->color }}</div>
+                      <div class="color">{{ $item['item']->design }}</div>
                     </div>
                     <div class="price">{{ number_format($item['price'],0,',','.') }}₫</div>
                   </div>

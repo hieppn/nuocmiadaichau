@@ -39,17 +39,17 @@ class ProductsController extends Controller
     if ($request->has('name') && $request->input('name') != null)
       $query_products->where('name', 'LIKE', '%' . $request->input('name') . '%');
 
-    if ($request->has('os') && $request->input('os') != null)
-      $query_products->where('OS', 'LIKE', '%' . $request->input('os') . '%');
+    if ($request->has('model') && $request->input('model') != null)
+      $query_products->where('model', 'LIKE', '%' . $request->input('model') . '%');
 
     if ($request->has('price') && $request->input('price') != null) {
       $min_price_query = ProductDetail::select('product_id', DB::raw('min(sale_price) as min_sale_price'))->where('quantity', '>', 0)->groupBy('product_id');
 
       $query_products->joinSub($min_price_query, 'min_price_query', function ($join) {
         $join->on('products.id', '=', 'min_price_query.product_id');
-      })->select('id', 'name', 'image', 'monitor', 'front_camera', 'rear_camera', 'CPU', 'GPU', 'RAM', 'ROM', 'OS', 'pin', 'rate')->orderBy('min_sale_price', $request->input('price'));
+      })->select('id', 'name', 'image', 'productivity', 'vol', 'wat', 'bearings', 'speed', 'weight', 'size', 'model', 'insurance', 'rate')->orderBy('min_sale_price', $request->input('price'));
     } else {
-      $query_products->select('id', 'name', 'image', 'monitor', 'front_camera', 'rear_camera', 'CPU', 'GPU', 'RAM', 'ROM', 'OS', 'pin', 'rate')->latest();
+      $query_products->select('id', 'name', 'image', 'productivity', 'vol', 'wat', 'bearings', 'speed', 'weight', 'size', 'model', 'insurance', 'rate')->latest();
     }
 
     if ($request->has('type') && $request->input('type') == 'vote')
@@ -93,17 +93,17 @@ class ProductsController extends Controller
     if ($request->has('name') && $request->input('name') != null)
       $query_products->where('name', 'LIKE', '%' . $request->input('name') . '%');
 
-    if ($request->has('os') && $request->input('os') != null)
-      $query_products->where('OS', 'LIKE', '%' . $request->input('os') . '%');
+    if ($request->has('model') && $request->input('model') != null)
+      $query_products->where('model', 'LIKE', '%' . $request->input('model') . '%');
 
     if ($request->has('price') && $request->input('price') != null) {
       $min_price_query = ProductDetail::select('product_id', DB::raw('min(sale_price) as min_sale_price'))->where('quantity', '>', 0)->groupBy('product_id');
 
       $query_products->joinSub($min_price_query, 'min_price_query', function ($join) {
         $join->on('products.id', '=', 'min_price_query.product_id');
-      })->select('id', 'name', 'image', 'monitor', 'front_camera', 'rear_camera', 'CPU', 'GPU', 'RAM', 'ROM', 'OS', 'pin', 'rate')->orderBy('min_sale_price', $request->input('price'));
+      })->select('id', 'name', 'image', 'productivity', 'vol', 'wat', 'bearings', 'speed', 'weight', 'size', 'model', 'insurance', 'rate')->orderBy('min_sale_price', $request->input('price'));
     } else {
-      $query_products->select('id', 'name', 'image', 'monitor', 'front_camera', 'rear_camera', 'CPU', 'GPU', 'RAM', 'ROM', 'OS', 'pin', 'rate')->latest();
+      $query_products->select('id', 'name', 'image', 'productivity', 'vol', 'wat', 'bearings', 'speed', 'weight', 'size', 'model', 'insurance', 'rate')->latest();
     }
 
     if ($request->has('type') && $request->input('type') == 'vote')
@@ -134,7 +134,7 @@ class ProductsController extends Controller
       ['at_home_page', '=', false]
     ])->latest()->limit(5)->get(['product_id', 'title', 'image']);
 
-    $product = Product::select('id', 'producer_id', 'name', 'sku_code', 'monitor', 'front_camera', 'rear_camera', 'CPU', 'GPU', 'RAM', 'ROM', 'OS', 'pin', 'rate', 'information_details', 'product_introduction')
+    $product = Product::select('id', 'producer_id', 'name', 'sku_code', 'productivity', 'vol', 'wat', 'bearings', 'speed', 'weight', 'size', 'model', 'insurance', 'rate', 'information_details', 'product_introduction')
       ->whereHas('product_details', function (Builder $query) {
         $query->where('import_quantity', '>', 0);
       })
@@ -155,7 +155,7 @@ class ProductsController extends Controller
       'product_images' => function ($query) {
         $query->select('id', 'product_detail_id', 'image_name');
       }
-    ])->select('id', 'color', 'quantity', 'sale_price', 'promotion_price', 'promotion_start_date', 'promotion_end_date')->get();
+    ])->select('id', 'design', 'quantity', 'sale_price', 'promotion_price', 'promotion_start_date', 'promotion_end_date')->get();
 
     $suggest_products = Product::select('id', 'name', 'image', 'rate')
       ->whereHas('product_detail', function (Builder $query) {

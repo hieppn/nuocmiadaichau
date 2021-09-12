@@ -19,7 +19,7 @@ class ProductController extends Controller
 {
   public function index()
   {
-    $products = Product::select('id', 'producer_id', 'name', 'image', 'sku_code', 'OS', 'rate', 'created_at')
+    $products = Product::select('id', 'producer_id', 'name', 'image', 'sku_code', 'model', 'rate', 'created_at')
       ->whereHas('product_details', function (Builder $query) {
         $query->where('import_quantity', '>', 0);
       })
@@ -62,7 +62,11 @@ class ProductController extends Controller
 
         foreach ($product_details as $product_detail) {
           foreach ($product_detail->product_images as $image) {
-            Storage::disk('public')->delete('images/products/' . $image->image_name);
+            $factory = (new Factory)->withServiceAccount(base_path() . '/' . 'firebase_credential.json');
+            $storage = $factory->createStorage();
+            $bucket = $storage->getBucket('nuocmiasaigon-fc089.appspot.com');
+            $object = $bucket->object($image->image_name);
+            $object->delete();
             $image->delete();
           }
           $product_detail->delete();
@@ -79,7 +83,11 @@ class ProductController extends Controller
           if ($product_detail->import_quantity > 0 && $product_detail->import_quantity == $product_detail->quantity) {
 
             foreach ($product_detail->product_images as $image) {
-              Storage::disk('public')->delete('images/products/' . $image->image_name);
+              $factory = (new Factory)->withServiceAccount(base_path() . '/' . 'firebase_credential.json');
+              $storage = $factory->createStorage();
+              $bucket = $storage->getBucket('nuocmiasaigon-fc089.appspot.com');
+              $object = $bucket->object($image->image_name);
+              $object->delete();
               $image->delete();
             }
             $product_detail->delete();
@@ -120,17 +128,20 @@ class ProductController extends Controller
       $dom->loadHtml($information_details, LIBXML_HTML_NODEFDTD);
       $images = $dom->getElementsByTagName('img');
       foreach ($images as $k => $img) {
-        $data = $img->getAttribute('src');
-        if (Str::containsAll($data, ['data:image', 'base64'])) {
-          list(, $type) = explode('data:image/', $data);
-          list($type,) = explode(';base64,', $type);
-          list(, $data) = explode(';base64,', $data);
-          $data = base64_decode($data);
-          $image_name = time() . $k . '_' . Str::random(8) . '.' . $type;
-          Storage::disk('public')->put('images/posts/' . $image_name, $data);
-          $img->removeAttribute('src');
-          $img->setAttribute('src', '/storage/images/posts/' . $image_name);
-        }
+        $image_name = time() . '_' . uniqid() . '.png';
+        $factory = (new Factory)->withServiceAccount(base_path() . '/' . 'firebase_credential.json');
+        $storage = $factory->createStorage();
+        $bucket = $storage->getBucket('nuocmiasaigon-fc089.appspot.com');
+        $bucket->upload(
+          file_get_contents($img->getAttribute('src')),
+          [
+            'name' => $image_name,
+            'alt' => 'media'
+          ]
+        );
+
+        $img->removeAttribute('src');
+        $img->setAttribute('src', 'https://firebasestorage.googleapis.com/v0/b/nuocmiasaigon-fc089.appspot.com/o/' . $image_name . '?alt=media');
       }
 
       $information_details = $dom->saveHTML();
@@ -159,24 +170,20 @@ class ProductController extends Controller
 
       foreach ($images as $k => $img) {
 
-        $data = $img->getAttribute('src');
+        $image_name = time() . '_' . uniqid() . '.png';
+        $factory = (new Factory)->withServiceAccount(base_path() . '/' . 'firebase_credential.json');
+        $storage = $factory->createStorage();
+        $bucket = $storage->getBucket('nuocmiasaigon-fc089.appspot.com');
+        $bucket->upload(
+          file_get_contents($img->getAttribute('src')),
+          [
+            'name' => $image_name,
+            'alt' => 'media'
+          ]
+        );
 
-        if (Str::containsAll($data, ['data:image', 'base64'])) {
-
-          list(, $type) = explode('data:image/', $data);
-          list($type,) = explode(';base64,', $type);
-
-          list(, $data) = explode(';base64,', $data);
-
-          $data = base64_decode($data);
-
-          $image_name = time() . $k . '_' . Str::random(8) . '.' . $type;
-
-          Storage::disk('public')->put('images/posts/' . $image_name, $data);
-
-          $img->removeAttribute('src');
-          $img->setAttribute('src', '/storage/images/posts/' . $image_name);
-        }
+        $img->removeAttribute('src');
+        $img->setAttribute('src', 'https://firebasestorage.googleapis.com/v0/b/nuocmiasaigon-fc089.appspot.com/o/' . $image_name . '?alt=media');
       }
 
       $product_introduction = $dom->saveHTML();
@@ -194,15 +201,15 @@ class ProductController extends Controller
     $product->name = $request->name;
     $product->producer_id = $request->producer_id;
     $product->sku_code = $request->sku_code;
-    $product->monitor = $request->monitor;
-    $product->front_camera = $request->front_camera;
-    $product->rear_camera = $request->rear_camera;
-    $product->CPU = $request->CPU;
-    $product->GPU = $request->GPU;
-    $product->RAM = $request->RAM;
-    $product->ROM = $request->ROM;
-    $product->OS = $request->OS;
-    $product->pin = $request->pin;
+    $product->productivity = $request->productivity;
+    $product->vol = $request->vol;
+    $product->wat = $request->wat;
+    $product->bearings = $request->bearings;
+    $product->speed = $request->speed;
+    $product->weight = $request->weight;
+    $product->size = $request->size;
+    $product->model = $request->model;
+    $product->insurance = $request->insurance;
     $product->rate = 5.0;
 
     if ($request->hasFile('image')) {
@@ -248,7 +255,7 @@ class ProductController extends Controller
       foreach ($request->product_details as $key => $product_detail) {
         $new_product_detail = new ProductDetail;
         $new_product_detail->product_id = $product->id;
-        $new_product_detail->color = $product_detail['color'];
+        $new_product_detail->design = $product_detail['design'];
         $new_product_detail->import_quantity = $product_detail['quantity'];
         $new_product_detail->quantity = $product_detail['quantity'];
         $new_product_detail->import_price = str_replace('.', '', $product_detail['import_price']);
@@ -303,7 +310,7 @@ class ProductController extends Controller
   public function edit($id)
   {
     $producers = Producer::select('id', 'name')->orderBy('name', 'asc')->get();
-    $product = Product::select('id', 'producer_id', 'name', 'image', 'sku_code', 'monitor', 'front_camera', 'rear_camera', 'CPU', 'GPU', 'RAM', 'ROM', 'OS', 'pin', 'information_details', 'product_introduction')
+    $product = Product::select('id', 'producer_id', 'name', 'image', 'sku_code', 'productivity', 'vol', 'wat', 'bearings', 'speed', 'weight', 'size', 'model', 'insurance', 'information_details', 'product_introduction')
       ->whereHas('product_details', function (Builder $query) {
         $query->where('import_quantity', '>', 0);
       })->where('id', $id)->with([
@@ -311,7 +318,7 @@ class ProductController extends Controller
           $query->select('id', 'product_id', 'content', 'start_date', 'end_date');
         },
         'product_details' => function ($query) {
-          $query->select('id', 'product_id', 'color', 'import_quantity', 'import_price', 'sale_price', 'promotion_price', 'promotion_start_date', 'promotion_end_date')->where('import_quantity', '>', 0)
+          $query->select('id', 'product_id', 'design', 'import_quantity', 'import_price', 'sale_price', 'promotion_price', 'promotion_start_date', 'promotion_end_date')->where('import_quantity', '>', 0)
             ->with([
               'product_images' => function ($query) {
                 $query->select('id', 'product_detail_id', 'image_name');
@@ -348,25 +355,20 @@ class ProductController extends Controller
       $images = $dom->getElementsByTagName('img');
 
       foreach ($images as $k => $img) {
+        $image_name = time() . '_' . uniqid() . '.png';
+        $factory = (new Factory)->withServiceAccount(base_path() . '/' . 'firebase_credential.json');
+        $storage = $factory->createStorage();
+        $bucket = $storage->getBucket('nuocmiasaigon-fc089.appspot.com');
+        $bucket->upload(
+          file_get_contents($img->getAttribute('src')),
+          [
+            'name' => $image_name,
+            'alt' => 'media'
+          ]
+        );
 
-        $data = $img->getAttribute('src');
-
-        if (Str::containsAll($data, ['data:image', 'base64'])) {
-
-          list(, $type) = explode('data:image/', $data);
-          list($type,) = explode(';base64,', $type);
-
-          list(, $data) = explode(';base64,', $data);
-
-          $data = base64_decode($data);
-
-          $image_name = time() . $k . '_' . Str::random(8) . '.' . $type;
-
-          Storage::disk('public')->put('images/posts/' . $image_name, $data);
-
-          $img->removeAttribute('src');
-          $img->setAttribute('src', '/storage/images/posts/' . $image_name);
-        }
+        $img->removeAttribute('src');
+        $img->setAttribute('src', 'https://firebasestorage.googleapis.com/v0/b/nuocmiasaigon-fc089.appspot.com/o/' . $image_name . '?alt=media');
       }
 
       $information_details = $dom->saveHTML();
@@ -394,25 +396,20 @@ class ProductController extends Controller
       $images = $dom->getElementsByTagName('img');
 
       foreach ($images as $k => $img) {
+        $image_name = time() . '_' . uniqid() . '.png';
+        $factory = (new Factory)->withServiceAccount(base_path() . '/' . 'firebase_credential.json');
+        $storage = $factory->createStorage();
+        $bucket = $storage->getBucket('nuocmiasaigon-fc089.appspot.com');
+        $bucket->upload(
+          file_get_contents($img->getAttribute('src')),
+          [
+            'name' => $image_name,
+            'alt' => 'media'
+          ]
+        );
 
-        $data = $img->getAttribute('src');
-
-        if (Str::containsAll($data, ['data:image', 'base64'])) {
-
-          list(, $type) = explode('data:image/', $data);
-          list($type,) = explode(';base64,', $type);
-
-          list(, $data) = explode(';base64,', $data);
-
-          $data = base64_decode($data);
-
-          $image_name = time() . $k . '_' . Str::random(8) . '.' . $type;
-
-          Storage::disk('public')->put('images/posts/' . $image_name, $data);
-
-          $img->removeAttribute('src');
-          $img->setAttribute('src', '/storage/images/posts/' . $image_name);
-        }
+        $img->removeAttribute('src');
+        $img->setAttribute('src', 'https://firebasestorage.googleapis.com/v0/b/nuocmiasaigon-fc089.appspot.com/o/' . $image_name . '?alt=media');
       }
 
       $product_introduction = $dom->saveHTML();
@@ -430,19 +427,19 @@ class ProductController extends Controller
     $product->name = $request->name;
     $product->producer_id = $request->producer_id;
     $product->sku_code = $request->sku_code;
-    $product->monitor = $request->monitor;
-    $product->front_camera = $request->front_camera;
-    $product->rear_camera = $request->rear_camera;
-    $product->CPU = $request->CPU;
-    $product->GPU = $request->GPU;
-    $product->RAM = $request->RAM;
-    $product->ROM = $request->ROM;
-    $product->OS = $request->OS;
-    $product->pin = $request->pin;
+    $product->productivity = $request->productivity;
+    $product->vol = $request->vol;
+    $product->wat = $request->wat;
+    $product->bearings = $request->bearings;
+    $product->speed = $request->speed;
+    $product->weight = $request->weight;
+    $product->size = $request->size;
+    $product->model = $request->model;
+    $product->insurance = $request->insurance;
 
     if ($request->hasFile('image')) {
       $image_name = time() . uniqid() . '_' . $_FILES['image']['name'];
-      $factory = (new Factory)->withServiceAccount(env('FIREBASE_CREDENTIALS'), __DIR__ . 'firebase_credential.json');
+      $factory = (new Factory)->withServiceAccount(base_path() . '/' . 'firebase_credential.json');
       $storage = $factory->createStorage();
       $bucket = $storage->getBucket('nuocmiasaigon-fc089.appspot.com');
       $bucket->upload(
@@ -452,15 +449,10 @@ class ProductController extends Controller
           'alt' => 'media'
         ]
       );
-      if ($product->image) {
-        $object = $bucket->object($product->image);
-        $object->delete();
-      }
       $product->image = $image_name;
     }
 
     $product->save();
-
     if ($request->has('old_product_promotions')) {
       foreach ($request->old_product_promotions as $key => $old_product_promotion) {
         $promotion = Promotion::where('id', $key)->first();
@@ -512,7 +504,7 @@ class ProductController extends Controller
         $old_product_detail = ProductDetail::where('id', $key)->first();
         if (!$old_product_detail) abort(404);
 
-        $old_product_detail->color = $product_detail['color'];
+        $old_product_detail->design = $product_detail['design'];
         $old_product_detail->import_quantity = $product_detail['quantity'];
         $old_product_detail->quantity = $product_detail['quantity'] - $sum;
         $old_product_detail->import_price = str_replace('.', '', $product_detail['import_price']);
@@ -545,7 +537,7 @@ class ProductController extends Controller
       foreach ($request->product_details as $key => $product_detail) {
         $new_product_detail = new ProductDetail;
         $new_product_detail->product_id = $product->id;
-        $new_product_detail->color = $product_detail['color'];
+        $new_product_detail->design = $product_detail['design'];
         $new_product_detail->import_quantity = $product_detail['quantity'];
         $new_product_detail->quantity = $product_detail['quantity'];
         $new_product_detail->import_price = str_replace('.', '', $product_detail['import_price']);
@@ -578,7 +570,6 @@ class ProductController extends Controller
               'alt' => 'media'
             ]
           );
-
           $new_image = new ProductImage;
           $new_image->product_detail_id = $new_product_detail->id;
           $new_image->image_name = $image_name;
@@ -594,9 +585,9 @@ class ProductController extends Controller
       $bucket = $storage->getBucket('nuocmiasaigon-fc089.appspot.com');
       foreach ($request->file('old_product_details') as $key => $images) {
         foreach ($images['images'] as $image) {
-          $image_name = time() . uniqid() . '_' . $_FILES['image']['name'];
+          $image_name = time() . uniqid() . '.png';
           $bucket->upload(
-            file_get_contents($_FILES['image']['tmp_name']),
+            file_get_contents($image),
             [
               'name' => $image_name,
               'alt' => 'media'
@@ -656,6 +647,7 @@ class ProductController extends Controller
         foreach ($product_detail->product_images as $image) {
           $object = $bucket->object($image->image_name);
           $object->delete();
+          ProductImage::where('image_name', $image->image_name)->delete();
         }
         $product_detail->delete();
       } else {
@@ -680,6 +672,7 @@ class ProductController extends Controller
     $bucket = $storage->getBucket('nuocmiasaigon-fc089.appspot.com');
     $object = $bucket->object($image->image_name);
     $object->delete();
+    $image->delete();
     return response()->json();
   }
 }

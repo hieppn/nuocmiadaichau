@@ -85,65 +85,71 @@
           <div class="row">
             <div class="col-md-4">
               <div class="form-group">
-                <label for="monitor">Màn Hình <span class="text-red">*</span></label>
-                <input type="text" name="monitor" class="form-control" id="monitor" placeholder="Màn hình" required autocomplete="off">
+                <label for="productivity">Năng suất <span class="text-red">*</span></label>
+                <input type="text" name="productivity" class="form-control" id="productivity" placeholder="Năng suất" required autocomplete="off">
               </div>
             </div>
             <div class="col-md-4">
               <div class="form-group">
-                <label for="front_camera">Camera <span class="text-red">*</span></label>
-                <input type="text" name="front_camera" class="form-control" id="front_camera" placeholder="Camera" required autocomplete="off">
+                <label for="vol">Điện áp <span class="text-red">*</span></label>
+                <input type="text" name="vol" class="form-control" id="vol" placeholder="Điện áp" required autocomplete="off">
               </div>
             </div>
             <div class="col-md-4">
               <div class="form-group">
-                <label for="rear_camera">Kích Thước <span class="text-red">*</span></label>
-                <input type="text" name="rear_camera" class="form-control" id="rear_camera" placeholder="Kích Thước" required autocomplete="off">
+                <label for="wat">Công suất <span class="text-red">*</span></label>
+                <input type="text" name="wat" class="form-control" id="wat" placeholder="Công suất" required autocomplete="off">
               </div>
             </div>
           </div>
           <div class="row">
             <div class="col-md-4">
               <div class="form-group">
-                <label>Hệ Điều Hành <span class="text-red">*</span></label>
-                <select class="form-control" name="OS" required>
-                  <option value="">-- Chọn hệ điều hành --</option>
-                  <option value="Linux">Linux</option>
-                  <option value="MacOS">MacOS</option>
-                  <option value="Windows">Windows</option>
+                <label>Model <span class="text-red">*</span></label>
+                <select class="form-control" name="model" required>
+                  <option value="">-- Chọn model --</option>
+                  <option value="1">Dòng máy siêu sạch phổ thông chuyên dụng cho lượng khách trung bình khá như khách vãng lai, hàng xóm, chợ</option>
+                  <option value="2">Dòng máy ép mía siêu sạch cao cấp chuyên dụng cho lượng khách khá và tương đối đông khách như căn tin, trường học</option>
+                  <option value="3">Dòng máy ép mía siêu sạch công nghiệp siêu cấp chuyên dụng cho lượng khách như công ty, siêu thị, hội chợ, nhà hát</option>
+                  <option value="4">Dòng xe nước mía siêu sạch phổ thông dụng lượng khách trung bình khá như vãng lai, hàng xóm, chợ</option>
+                  <option value="5">Dòng xe nước mía siêu sạch cao cấp thông dụng lượng khánh khá và tương đối đông khách như trường học, căn tin</option>
+                  <option value="6">Dòng xe nước mía siêu sạch công nghiệp siêu cấp pro dành cho lượng khách công ty, siêu thị, hội chợ, nhà hát</option>
+                  <option value="7">Dòng xe nước mía siêu sạch nửa bàn và liền bàn không tủ kính từ phổ thông tới công nghiệp siêu cấp</option>
+                  <option value="8">Dòng xe tay quay truyền thống 2rulo nhôm dành cho kinh doanh giá rẻ dành cho khách hàng chuộng thức uống có tạo bọt</option>
+                  <option value="9">Dòng xe tay quay hiện đại siêu cấp bật nhất thị trường 2 rulo inox không bay màu rỉ sét theo thời gian</option>
                 </select>
               </div>
             </div>
             <div class="col-md-4">
               <div class="form-group">
-                <label for="CPU">CPU <span class="text-red">*</span></label>
-                <input type="text" name="CPU" class="form-control" id="CPU" placeholder="CPU" required autocomplete="off">
+                <label for="bearings">Bạc đạn <span class="text-red">*</span></label>
+                <input type="text" name="bearings" class="form-control" id="bearings" placeholder="Bạc đạn" required autocomplete="off">
               </div>
             </div>
             <div class="col-md-4">
               <div class="form-group">
-                <label for="GPU">GVA <span class="text-red">*</span></label>
-                <input type="text" name="GPU" class="form-control" id="GPU" placeholder="GVA" required autocomplete="off">
+                <label for="speed">Tốc độ quay <span class="text-red">*</span></label>
+                <input type="text" name="speed" class="form-control" id="speed" placeholder="Tốc độ quay" required autocomplete="off">
               </div>
             </div>
           </div>
           <div class="row">
             <div class="col-md-4">
               <div class="form-group">
-                <label for="RAM">RAM (GB) <span class="text-red">*</span></label>
-                <input type="number" min="1" name="RAM" class="form-control" id="RAM" placeholder="RAM" required autocomplete="off">
+                <label for="weight">Trọng lượng <span class="text-red">*</span></label>
+                <input type="text" name="weight" class="form-control" id="weight" placeholder="Trọng lượng" required autocomplete="off">
               </div>
             </div>
             <div class="col-md-4">
               <div class="form-group">
-                <label for="ROM">ROM (GB) <span class="text-red">*</span></label>
-                <input type="number" min="1" name="ROM" class="form-control" id="ROM" placeholder="ROM" required autocomplete="off">
+                <label for="size">Kích thước <span class="text-red">*</span></label>
+                <input type="text" name="size" class="form-control" id="size" placeholder="Kích thước" required autocomplete="off">
               </div>
             </div>
             <div class="col-md-4">
               <div class="form-group">
-                <label for="pin">PIN <span class="text-red">*</span></label>
-                <input type="text" name="pin" class="form-control" id="pin" placeholder="Pin" required autocomplete="off">
+                <label for="insurance">Bảo hành <span class="text-red">*</span></label>
+                <input type="text" name="insurance" class="form-control" id="insurance" placeholder="Bảo hành" required autocomplete="off">
               </div>
             </div>
           </div>
@@ -528,7 +534,7 @@
         <div class="col-md-4">
           <div class="form-group">
             <label for="color_{?}">Mầu Sắc <span class="text-red">*</span></label>
-            <input type="text" name="product_details[{?}][color]" class="form-control color" id="color_{?}" placeholder="Mầu sắc" required autocomplete="off">
+            <input type="text" name="product_details[{?}][design]" class="form-control color" id="design_{?}" placeholder="Mẫu mã" required autocomplete="off">
           </div>
         </div>
         <div class="col-md-4">

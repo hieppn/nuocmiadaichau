@@ -92,7 +92,7 @@
                 <th data-orderable="false" data-width="85px">Mã Sản Phẩm</th>
                 <th data-orderable="false">Tên Sản Phẩm</th>
                 <th data-width="90px">Hãng Sản Xuất</th>
-                <th data-width="85px">Hệ Điều Hành</th>
+                <th data-width="85px">Model</th>
                 <th data-width="60px">Đánh Giá</th>
                 <th data-width="60px" data-type="date-euro">Ngày Tạo</th>
                 <th data-width="66px">Trạng Thái</th>
@@ -115,7 +115,7 @@
                     <a class="text-left" href="{{ route('product_page', ['id' => $product->id]) }}" title="{{ $product->name }}">{{ $product->name }}</a>
                   </td>
                   <td>{{ $product->producer->name }}</td>
-                  <td>{{ $product->OS }}</td>
+                  <td>{{ $product->model }}</td>
                   <td>{{ $product->rate }}/5 Điểm</td>
                   <td> {{ \Carbon\Carbon::parse($product->created_at)->format('d/m/Y')}}</td>
                   <td>

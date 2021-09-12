@@ -18,6 +18,7 @@
     margin-bottom: 10px;
     color: #f30;
   }
+
   input.error,
   select.error {
     border-color: #f30;
@@ -51,7 +52,7 @@
         <div class="col-md-3">
           <label for="title">Hình Ảnh Hiển Thị <span class="text-red">*</span></label>
           <div class="upload-image text-center">
-            <div title="Image Preview" class="image-preview" style="background-image: url('{{ Helper::get_image_product_url($product->image) }}'); padding-top: 100%; background-size: contain; background-repeat: no-repeat; background-position: center; margin-bottom: 5px; border: 1px solid #f4f4f4;"></div>
+            <div title="Image Preview" class="image-preview" style="background-image: url('{{ Helper::get_image_product_url($product->image) }}'); padding-top: 100%; background-weight: contain; background-repeat: no-repeat; background-position: center; margin-bottom: 5px; border: 1px solid #f4f4f4;"></div>
             <label for="upload" title="Upload Image" class="btn btn-primary btn-sm"><i class="fa fa-folder-open"></i>Chọn Hình Ảnh</label>
             <input type="file" accept="image/*" id="upload" style="display:none" name="image">
           </div>
@@ -76,7 +77,7 @@
                 <select class="form-control" name="producer_id" required>
                   <option value="">-- Chọn hãng sản xuất --</option>
                   @foreach($producers as $producer)
-                    <option value="{{ $producer->id }}" {{ $product->producer_id == $producer->id ? 'selected' : '' }}>{{ $producer->name }}</option>
+                  <option value="{{ $producer->id }}" {{ $product->producer_id == $producer->id ? 'selected' : '' }}>{{ $producer->name }}</option>
                   @endforeach
                 </select>
               </div>
@@ -85,65 +86,71 @@
           <div class="row">
             <div class="col-md-4">
               <div class="form-group">
-                <label for="monitor">Màn Hình <span class="text-red">*</span></label>
-                <input type="text" name="monitor" class="form-control" id="monitor" placeholder="Màn hình" required autocomplete="off" value="{{ $product->monitor }}">
+                <label for="productivity">Năng suất <span class="text-red">*</span></label>
+                <input type="text" name="productivity" class="form-control" id="productivity" placeholder="Năng suất" required autocomplete="off" value="{{ $product->productivity }}">
               </div>
             </div>
             <div class="col-md-4">
               <div class="form-group">
-                <label for="front_camera">Camera <span class="text-red">*</span></label>
-                <input type="text" name="front_camera" class="form-control" id="front_camera" placeholder="Camera" required autocomplete="off" value="{{ $product->front_camera }}">
+                <label for="vol">Điện áp <span class="text-red">*</span></label>
+                <input type="text" name="vol" class="form-control" id="vol" placeholder="Điện áp" required autocomplete="off" value="{{ $product->vol }}">
               </div>
             </div>
             <div class="col-md-4">
               <div class="form-group">
-                <label for="rear_camera">Kích Thước <span class="text-red">*</span></label>
-                <input type="text" name="rear_camera" class="form-control" id="rear_camera" placeholder="Kích Thước" required autocomplete="off" value="{{ $product->rear_camera }}">
+                <label for="wat">Công suất <span class="text-red">*</span></label>
+                <input type="text" name="wat" class="form-control" id="wat" placeholder="Công suất" required autocomplete="off" value="{{ $product->wat }}">
               </div>
             </div>
           </div>
           <div class="row">
             <div class="col-md-4">
               <div class="form-group">
-                <label>Hệ Điều Hành <span class="text-red">*</span></label>
-                <select class="form-control" name="OS" required>
-                  <option value="">-- Chọn hệ điều hành --</option>
-                  <option value="Linux" {{ $product->OS == 'Linux' ? 'selected' : '' }}>Linux</option>
-                  <option value="MacOS" {{ $product->OS == 'MacOS' ? 'selected' : '' }}>MacOS</option>
-                  <option value="Windows" {{ $product->OS == 'Windows' ? 'selected' : '' }}>Windows</option>
+                <label>Mọi hình sử dụng<span class="text-red">*</span></label>
+                <select class="form-control" name="model" required>
+                  <option value="">-- Chọn loại --</option>
+                  <option value="1" {{ $product->model == '1' ? 'selected' : '' }}>Dòng máy siêu sạch phổ thông chuyên dụng cho lượng khách trung bình khá như khách vãng lai, hàng xóm, chợ</option>
+                  <option value="2" {{ $product->model == '2' ? 'selected' : '' }}>Dòng máy ép mía siêu sạch cao cấp chuyên dụng cho lượng khách khá và tương đối đông khách như căn tin, trường học</option>
+                  <option value="3" {{ $product->model == '3' ? 'selected' : '' }}>Dòng máy ép mía siêu sạch công nghiệp siêu cấp chuyên dụng cho lượng khách như công ty, siêu thị, hội chợ, nhà hát</option>
+                  <option value="4" {{ $product->model == '4' ? 'selected' : '' }}>Dòng xe nước mía siêu sạch phổ thông dụng lượng khách trung bình khá như vãng lai, hàng xóm, chợ</option>
+                  <option value="5" {{ $product->model == '5' ? 'selected' : '' }}>Dòng xe nước mía siêu sạch cao cấp thông dụng lượng khánh khá và tương đối đông khách như trường học, căn tin</option>
+                  <option value="6" {{ $product->model == '6' ? 'selected' : '' }}>Dòng xe nước mía siêu sạch công nghiệp siêu cấp pro dành cho lượng khách công ty, siêu thị, hội chợ, nhà hát</option>
+                  <option value="7" {{ $product->model == '7' ? 'selected' : '' }}>Dòng xe nước mía siêu sạch nửa bàn và liền bàn không tủ kính từ phổ thông tới công nghiệp siêu cấp</option>
+                  <option value="8" {{ $product->model == '8' ? 'selected' : '' }}>Dòng xe tay quay truyền thống 2rulo nhôm dành cho kinh doanh giá rẻ dành cho khách hàng chuộng thức uống có tạo bọt</option>
+                  <option value="9" {{ $product->model == '9' ? 'selected' : '' }}>Dòng xe tay quay hiện đại siêu cấp bật nhất thị trường 2 rulo inox không bay màu rỉ sét theo thời gian</option>
                 </select>
               </div>
             </div>
             <div class="col-md-4">
               <div class="form-group">
-                <label for="CPU">CPU <span class="text-red">*</span></label>
-                <input type="text" name="CPU" class="form-control" id="CPU" placeholder="CPU" required autocomplete="off" value="{{ $product->CPU }}">
+                <label for="bearings">Bạc đạn <span class="text-red">*</span></label>
+                <input type="text" name="bearings" class="form-control" id="bearings" placeholder="Bạc đạn" required autocomplete="off" value="{{ $product->bearings }}">
               </div>
             </div>
             <div class="col-md-4">
               <div class="form-group">
-                <label for="GPU">VGA <span class="text-red">*</span></label>
-                <input type="text" name="GPU" class="form-control" id="GPU" placeholder="VGA" required autocomplete="off" value="{{ $product->GPU }}">
+                <label for="speed">Tốc độ quay <span class="text-red">*</span></label>
+                <input type="text" name="speed" class="form-control" id="speed" placeholder="Tốc độ quay" required autocomplete="off" value="{{ $product->speed }}">
               </div>
             </div>
           </div>
           <div class="row">
             <div class="col-md-4">
               <div class="form-group">
-                <label for="RAM">RAM (GB) <span class="text-red">*</span></label>
-                <input type="number" min="1" name="RAM" class="form-control" id="RAM" placeholder="RAM" required autocomplete="off" value="{{ $product->RAM }}">
+                <label for="weight">Trọng lượng <span class="text-red">*</span></label>
+                <input type="number" min="1" name="weight" class="form-control" id="weight" placeholder="Trọng lượng" required autocomplete="off" value="{{ $product->weight }}">
               </div>
             </div>
             <div class="col-md-4">
               <div class="form-group">
-                <label for="ROM">ROM (GB) <span class="text-red">*</span></label>
-                <input type="number" min="1" name="ROM" class="form-control" id="ROM" placeholder="ROM" required autocomplete="off" value="{{ $product->ROM }}">
+                <label for="size">Kích thước<span class="text-red">*</span></label>
+                <input type="number" min="1" name="size" class="form-control" id="size" placeholder="Kích thước" required autocomplete="off" value="{{ $product->size }}">
               </div>
             </div>
             <div class="col-md-4">
               <div class="form-group">
-                <label for="pin">PIN <span class="text-red">*</span></label>
-                <input type="text" name="pin" class="form-control" id="pin" placeholder="Pin" required autocomplete="off" value="{{ $product->pin }}">
+                <label for="insurance">Bảo hành <span class="text-red">*</span></label>
+                <input type="text" name="insurance" class="form-control" id="insurance" placeholder="Bảo hành" required autocomplete="off" value="{{ $product->insurance }}">
               </div>
             </div>
           </div>
@@ -161,7 +168,7 @@
     </div>
     <div class="box-body">
       <div id="product-promotions">
-      @if($product->promotions->isNotEmpty())
+        @if($product->promotions->isNotEmpty())
         @foreach($product->promotions as $promotion)
         <div class="box box-solid box-default collapsed-box" style="margin-bottom: 5px;">
           <div class="box-header">
@@ -196,7 +203,7 @@
           </div>
         </div>
         @endforeach
-      @endif
+        @endif
       </div>
       <div class="text-center">
         <button class="add-promotion btn btn-success"><i class="fa fa-plus" aria-hidden="true"></i> Thêm Khuyến Mãi</button>
@@ -205,7 +212,7 @@
   </div>
   <div class="box box-primary">
     <div class="box-header with-border">
-      <h3 class="box-title">Thông Tin Mầu Sắc Và Giá Sản Phẩm</h3>
+      <h3 class="box-title">Thông Tin Mẫu Mã Và Giá Sản Phẩm</h3>
       <div class="box-tools">
         <!-- This will cause the box to collapse when clicked -->
         <button class="btn btn-box-tool" data-widget="collapse" data-toggle="tooltip" title="Collapse"><i class="fa fa-minus"></i></button>
@@ -214,78 +221,78 @@
     <div class="box-body">
       <div id="product-details">
         @if($product->product_details->isNotEmpty())
-          @foreach($product->product_details as $product_detail)
-          <div class="box box-solid box-default collapsed-box" style="margin-bottom: 5px;">
-            <div class="box-header">
-              <h3 class="box-title">
-                <span class="name">{{ $product->name }}</span>
-                <span class="color">{{ ' - '.$product_detail->color }}</span>
-              </h3>
-              <div class="box-tools">
-                <button class="btn btn-box-tool" data-widget="collapse" data-toggle="tooltip" title="Collapse"><i class="fa fa-plus"></i></button>
-                <a href="javascript:void(0);" data-id="{{ $product_detail->id }}" class="btn btn-box-tool remove-product-detail" title="Xóa" data-url="{{ route('admin.product.delete_product_detail') }}" style="color: #f30;">
-                  <i class="fa fa-times"></i>
-                </a>
-              </div>
-            </div>
-            <div class="box-body" style="display: none;">
-              <div class="row">
-                <div class="col-md-4">
-                  <div class="form-group">
-                    <label for="color_{{ $product_detail->id }}">Mầu Sắc <span class="text-red">*</span></label>
-                    <input type="text" name="old_product_details[{{ $product_detail->id }}][color]" class="form-control color" id="color_{{ $product_detail->id }}" placeholder="Mầu sắc" required autocomplete="off" value="{{ $product_detail->color }}">
-                  </div>
-                </div>
-                <div class="col-md-4">
-                  <div class="form-group">
-                    <label for="quantity_{{ $product_detail->id }}">Số Lượng <span class="text-red">*</span></label>
-                    <input type="number" min="1" name="old_product_details[{{ $product_detail->id }}][quantity]" class="form-control" id="quantity_{{ $product_detail->id }}" placeholder="Số lượng" required autocomplete="off" value="{{ $product_detail->import_quantity }}">
-                  </div>
-                </div>
-                <div class="col-md-4">
-                  <div class="form-group">
-                    <label for="import_price_{{ $product_detail->id }}">Giá Nhập (VNĐ) <span class="text-red">*</span></label>
-                    <input type="text" name="old_product_details[{{ $product_detail->id }}][import_price]" class="form-control currency" id="import_price_{{ $product_detail->id }}" placeholder="Giá nhập" required autocomplete="off" value="{{ $product_detail->import_price }}">
-                  </div>
-                </div>
-              </div>
-              <div class="row">
-                <div class="col-md-4">
-                  <div class="form-group">
-                    <label for="sale_price_{{ $product_detail->id }}">Giá Bán (VNĐ) <span class="text-red">*</span></label>
-                    <input type="text" name="old_product_details[{{ $product_detail->id }}][sale_price]" class="form-control currency" id="sale_price_{{ $product_detail->id }}" placeholder="Giá bán" required autocomplete="off" value="{{ $product_detail->sale_price }}">
-                  </div>
-                </div>
-                <div class="col-md-4">
-                  <div class="form-group">
-                    <label for="promotion_price_{{ $product_detail->id }}">Giá Khuyến Mại (VNĐ)</label>
-                    <input type="text" name="old_product_details[{{ $product_detail->id }}][promotion_price]" class="form-control currency" id="promotion_price_{{ $product_detail->id }}" placeholder="Giá khuyến mại" autocomplete="off" value="{{ $product_detail->promotion_price }}">
-                  </div>
-                </div>
-                <div class="col-md-4">
-                  <div class="form-group">
-                    <label>Thời Gian Khuyến Mại</label>
-                    <div class="input-group">
-                      <div class="input-group-addon">
-                        <i class="fa fa-calendar"></i>
-                      </div>
-                      <input type="text" class="form-control pull-right reservation" name="old_product_details[{{ $product_detail->id }}][promotion_date]" autocomplete="off" value="{{ $product_detail->promotion_start_date != null && $product_detail->promotion_end_date != NULL ?date_format(date_create($product_detail->promotion_start_date), 'd/m/Y').' - '.date_format(date_create($product_detail->promotion_end_date), 'd/m/Y') : '' }}">
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div class="form-group" style="margin-bottom: 0;">
-                <label>Hình Ảnh Chi Tiết <span class="text-red">*</span></label>
-                <input type="file" name="old_product_details[{{ $product_detail->id }}][images][]" class="product-detail-{{ $product_detail->id }}-images" multiple>
-              </div>
+        @foreach($product->product_details as $product_detail)
+        <div class="box box-solid box-default collapsed-box" style="margin-bottom: 5px;">
+          <div class="box-header">
+            <h3 class="box-title">
+              <span class="name">{{ $product->name }}</span>
+              <span class="color">{{ ' - '.$product_detail->design }}</span>
+            </h3>
+            <div class="box-tools">
+              <button class="btn btn-box-tool" data-widget="collapse" data-toggle="tooltip" title="Collapse"><i class="fa fa-plus"></i></button>
+              <a href="javascript:void(0);" data-id="{{ $product_detail->id }}" class="btn btn-box-tool remove-product-detail" title="Xóa" data-url="{{ route('admin.product.delete_product_detail') }}" style="color: #f30;">
+                <i class="fa fa-times"></i>
+              </a>
             </div>
           </div>
-          @endforeach
+          <div class="box-body" style="display: none;">
+            <div class="row">
+              <div class="col-md-4">
+                <div class="form-group">
+                  <label for="design_{{ $product_detail->id }}">Mẫu Mã <span class="text-red">*</span></label>
+                  <input type="text" name="old_product_details[{{ $product_detail->id }}][design]" class="form-control color" id="color_{{ $product_detail->id }}" placeholder="Mẫu mã" required autocomplete="off" value="{{ $product_detail->design }}">
+                </div>
+              </div>
+              <div class="col-md-4">
+                <div class="form-group">
+                  <label for="quantity_{{ $product_detail->id }}">Số Lượng <span class="text-red">*</span></label>
+                  <input type="number" min="1" name="old_product_details[{{ $product_detail->id }}][quantity]" class="form-control" id="quantity_{{ $product_detail->id }}" placeholder="Số lượng" required autocomplete="off" value="{{ $product_detail->import_quantity }}">
+                </div>
+              </div>
+              <div class="col-md-4">
+                <div class="form-group">
+                  <label for="import_price_{{ $product_detail->id }}">Giá Nhập (VNĐ) <span class="text-red">*</span></label>
+                  <input type="text" name="old_product_details[{{ $product_detail->id }}][import_price]" class="form-control currency" id="import_price_{{ $product_detail->id }}" placeholder="Giá nhập" required autocomplete="off" value="{{ $product_detail->import_price }}">
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-4">
+                <div class="form-group">
+                  <label for="sale_price_{{ $product_detail->id }}">Giá Bán (VNĐ) <span class="text-red">*</span></label>
+                  <input type="text" name="old_product_details[{{ $product_detail->id }}][sale_price]" class="form-control currency" id="sale_price_{{ $product_detail->id }}" placeholder="Giá bán" required autocomplete="off" value="{{ $product_detail->sale_price }}">
+                </div>
+              </div>
+              <div class="col-md-4">
+                <div class="form-group">
+                  <label for="promotion_price_{{ $product_detail->id }}">Giá Khuyến Mại (VNĐ)</label>
+                  <input type="text" name="old_product_details[{{ $product_detail->id }}][promotion_price]" class="form-control currency" id="promotion_price_{{ $product_detail->id }}" placeholder="Giá khuyến mại" autocomplete="off" value="{{ $product_detail->promotion_price }}">
+                </div>
+              </div>
+              <div class="col-md-4">
+                <div class="form-group">
+                  <label>Thời Gian Khuyến Mại</label>
+                  <div class="input-group">
+                    <div class="input-group-addon">
+                      <i class="fa fa-calendar"></i>
+                    </div>
+                    <input type="text" class="form-control pull-right reservation" name="old_product_details[{{ $product_detail->id }}][promotion_date]" autocomplete="off" value="{{ $product_detail->promotion_start_date != null && $product_detail->promotion_end_date != NULL ?date_format(date_create($product_detail->promotion_start_date), 'd/m/Y').' - '.date_format(date_create($product_detail->promotion_end_date), 'd/m/Y') : '' }}">
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="form-group" style="margin-bottom: 0;">
+              <label>Hình Ảnh Chi Tiết <span class="text-red">*</span></label>
+              <input type="file" name="old_product_details[{{ $product_detail->id }}][images][]" class="product-detail-{{ $product_detail->id }}-images" multiple>
+            </div>
+          </div>
+        </div>
+        @endforeach
         @endif
       </div>
     </div>
     <div class="text-center box-footer">
-      <button class="add btn btn-success"><i class="fa fa-plus" aria-hidden="true"></i> Thêm Mầu Sắc Sản Phẩm</button>
+      <button class="add btn btn-success"><i class="fa fa-plus" aria-hidden="true"></i> Thêm Mẫu Mã</button>
     </div>
   </div>
   <div class="nav-tabs-custom">
@@ -337,7 +344,7 @@
     plugins: 'media image code table link lists preview fullscreen',
     toolbar: 'undo redo | formatselect | fontsizeselect | bold italic underline forecolor | alignleft aligncenter alignright alignjustify | numlist bullist | outdent indent | link image media table | code preview fullscreen',
     toolbar_drawer: 'sliding',
-    entity_encoding : "raw",
+    entity_encoding: "raw",
     branding: false,
     /* enable title field in the Image dialog*/
     image_title: true,
@@ -357,7 +364,7 @@
     */
     file_picker_types: 'image',
     /* and here's our custom image picker*/
-    file_picker_callback: function (cb, value, meta) {
+    file_picker_callback: function(cb, value, meta) {
       var input = document.createElement('input');
       input.setAttribute('type', 'file');
       input.setAttribute('accept', 'image/*');
@@ -370,24 +377,26 @@
         once you do not need it anymore.
       */
 
-      input.onchange = function () {
+      input.onchange = function() {
         var file = this.files[0];
 
         var reader = new FileReader();
-        reader.onload = function () {
+        reader.onload = function() {
           /*
             Note: Now we need to register the blob in TinyMCEs image blob
             registry. In the next release this part hopefully won't be
             necessary, as we are looking to handle it internally.
           */
           var id = 'blobid' + (new Date()).getTime();
-          var blobCache =  tinymce.activeEditor.editorUpload.blobCache;
+          var blobCache = tinymce.activeEditor.editorUpload.blobCache;
           var base64 = reader.result.split(',')[1];
           var blobInfo = blobCache.create(id, file, base64);
           blobCache.add(blobInfo);
 
           /* call the callback and populate the Title field with the file name */
-          cb(blobInfo.blobUri(), { title: file.name });
+          cb(blobInfo.blobUri(), {
+            title: file.name
+          });
         };
         reader.readAsDataURL(file);
       };
@@ -401,7 +410,7 @@
     plugins: 'media image code table link lists preview fullscreen',
     toolbar: 'undo redo | formatselect | fontsizeselect | bold italic underline forecolor | alignleft aligncenter alignright alignjustify | numlist bullist | outdent indent | link image media table | code preview fullscreen',
     toolbar_drawer: 'sliding',
-    entity_encoding : "raw",
+    entity_encoding: "raw",
     branding: false,
     /* enable title field in the Image dialog*/
     image_title: true,
@@ -421,7 +430,7 @@
     */
     file_picker_types: 'image',
     /* and here's our custom image picker*/
-    file_picker_callback: function (cb, value, meta) {
+    file_picker_callback: function(cb, value, meta) {
       var input = document.createElement('input');
       input.setAttribute('type', 'file');
       input.setAttribute('accept', 'image/*');
@@ -434,24 +443,26 @@
         once you do not need it anymore.
       */
 
-      input.onchange = function () {
+      input.onchange = function() {
         var file = this.files[0];
 
         var reader = new FileReader();
-        reader.onload = function () {
+        reader.onload = function() {
           /*
             Note: Now we need to register the blob in TinyMCEs image blob
             registry. In the next release this part hopefully won't be
             necessary, as we are looking to handle it internally.
           */
           var id = 'blobid' + (new Date()).getTime();
-          var blobCache =  tinymce.activeEditor.editorUpload.blobCache;
+          var blobCache = tinymce.activeEditor.editorUpload.blobCache;
           var base64 = reader.result.split(',')[1];
           var blobInfo = blobCache.create(id, file, base64);
           blobCache.add(blobInfo);
 
           /* call the callback and populate the Title field with the file name */
-          cb(blobInfo.blobUri(), { title: file.name });
+          cb(blobInfo.blobUri(), {
+            title: file.name
+          });
         };
         reader.readAsDataURL(file);
       };
@@ -460,7 +471,7 @@
     }
   });
 
-  $(document).ready(function(){
+  $(document).ready(function() {
     $("#upload").change(function(event) {
       var target = event.target || event.srcElement;
       if (target.value.length == 0) {
@@ -480,7 +491,7 @@
       addTrigger: 'button.add-promotion',
       deleteTrigger: 'button.delete-promotion',
       template: "#product-promotion",
-      afterAdd:function () {
+      afterAdd: function() {
         $('.promotion-reservation').daterangepicker({
           autoApply: true,
           minDate: moment(),
@@ -501,7 +512,7 @@
       addTrigger: 'button.add',
       deleteTrigger: 'button.delete',
       template: "#product-detail",
-      afterAdd:function () {
+      afterAdd: function() {
         $(".product-detail-images").fileinput({
           theme: "explorer-fa",
           required: true,
@@ -541,7 +552,7 @@
         $('#product-details>.field-group:last-child>.box').boxWidget('expand');
         $('input.color').on('keyup', function() {
           var val = $(this).val().trim();
-          if(val !== '') val = ' - ' + val;
+          if (val !== '') val = ' - ' + val;
           var name = $('input[name="name"]').val().trim();
           $(this).closest('.box').find('.box-header .box-title span.name').text(name);
           $(this).closest('.box').find('.box-header .box-title span.color').text(val);
@@ -552,38 +563,46 @@
       }
     });
 
-    @if($product->product_details->isNotEmpty())
-      @foreach($product->product_details as $product_detail)
-        $(".product-detail-{{$product_detail->id}}-images").fileinput({
-          theme: "explorer-fa",
-          required: false,
-          showUpload: false,
-          showCaption: false,
-          showClose: false,
-          maxFileCount: 8,
-          allowedFileExtensions: ['jpg', 'png', 'gif'],
-          initialPreviewAsData: true,
-          maxFileSize: 1000,
-          overwriteInitial: false,
-          removeFromPreviewOnError: true,
-          deleteUrl: "{{ route('admin.product.delete_image') }}",
-          ajaxDeleteSettings: {
-            headers: { 'X-CSRF-TOKEN': '{{ csrf_token() }}' }
-          },
-          @if($product_detail->product_images->isNotEmpty())
-            initialPreview: [
-              @foreach($product_detail->product_images as $image)
-                '{{ Helper::get_image_product_url($image->image_name) }}',
-              @endforeach
-            ],
-            initialPreviewConfig: [
-              @foreach($product_detail->product_images as $image)
-                { caption: "{{ $image->image_name }}", key: {{ $image->id }} },
-              @endforeach
-            ],
-          @endif
-        });
-      @endforeach
+    @if($product -> product_details -> isNotEmpty())
+    @foreach($product -> product_details as $product_detail)
+    $(".product-detail-{{$product_detail->id}}-images").fileinput({
+      theme: "explorer-fa",
+      required: false,
+      showUpload: false,
+      showCaption: false,
+      showClose: false,
+      maxFileCount: 8,
+      allowedFileExtensions: ['jpg', 'png', 'gif'],
+      initialPreviewAsData: true,
+      maxFileSize: 1000,
+      overwriteInitial: false,
+      removeFromPreviewOnError: true,
+      deleteUrl: "{{ route('admin.product.delete_image') }}",
+      ajaxDeleteSettings: {
+        headers: {
+          'X-CSRF-TOKEN': '{{ csrf_token() }}'
+        }
+      },
+      @if($product_detail -> product_images -> isNotEmpty())
+      initialPreview: [
+        @foreach($product_detail -> product_images as $image)
+        '{{ Helper::get_image_product_url($image->image_name) }}',
+        @endforeach
+      ],
+      initialPreviewConfig: [
+        @foreach($product_detail -> product_images as $image) {
+          caption: "{{ $image->image_name }}",
+          key: {
+            {
+              $image -> id
+            }
+          }
+        },
+        @endforeach
+      ],
+      @endif
+    });
+    @endforeach
     @endif
 
     $('input[name="name"]').on('keyup', function() {
@@ -593,7 +612,7 @@
 
     $('input.color').on('keyup', function() {
       var val = $(this).val().trim();
-      if(val !== '') val = ' - ' + val;
+      if (val !== '') val = ' - ' + val;
       var name = $('input[name="name"]').val().trim();
       $(this).closest('.box').find('.box-header .box-title span.name').text(name);
       $(this).closest('.box').find('.box-header .box-title span.color').text(val);
@@ -635,14 +654,14 @@
       vMin: '0'
     });
     var validator = $("#productForm").validate({
-      normalizer: function( value ) {
-        return $.trim( value );
+      normalizer: function(value) {
+        return $.trim(value);
       },
       errorElement: "span",
       ignore: "",
       highlight: function(element, errorClass, validClass) {
         $(element).addClass(errorClass).removeClass(validClass);
-        if($(element).parents('div#product-details').length || $(element).parents('div#product-promotions').length) {
+        if ($(element).parents('div#product-details').length || $(element).parents('div#product-promotions').length) {
           $(element).parents('.box').boxWidget('expand');
         }
       },
@@ -652,7 +671,7 @@
     });
   });
 
-  $(document).ready(function(){
+  $(document).ready(function() {
 
     $(".remove-promotion").click(function() {
 
@@ -669,31 +688,33 @@
         showLoaderOnConfirm: true,
         preConfirm: () => {
           return fetch(url, {
-            method: 'POST',
-            headers: {
-              'Accept': 'application/json',
-              'Content-Type': 'application/json',
-              'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-            },
-            body: JSON.stringify({'promotion_id': promotion_id}),
-          })
-          .then(response => {
-            if (!response.ok) {
-              throw new Error(response.statusText);
-            }
-            return response.json();
-          })
-          .catch(error => {
-            Swal.showValidationMessage(error);
+              method: 'POST',
+              headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json',
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+              },
+              body: JSON.stringify({
+                'promotion_id': promotion_id
+              }),
+            })
+            .then(response => {
+              if (!response.ok) {
+                throw new Error(response.statusText);
+              }
+              return response.json();
+            })
+            .catch(error => {
+              Swal.showValidationMessage(error);
 
-            Swal.update({
-              type: 'error',
-              title: 'Lỗi!',
-              text: '',
-              showConfirmButton: false,
-              cancelButtonText: 'Ok',
-            });
-          })
+              Swal.update({
+                type: 'error',
+                title: 'Lỗi!',
+                text: '',
+                showConfirmButton: false,
+                cancelButtonText: 'Ok',
+              });
+            })
         },
       }).then((result) => {
         if (result.value) {
@@ -702,7 +723,7 @@
             title: result.value.title,
             text: result.value.content,
           }).then((result) => {
-            if (result.value){
+            if (result.value) {
               $(this).closest('.box').remove();
             }
           });
@@ -725,31 +746,33 @@
         showLoaderOnConfirm: true,
         preConfirm: () => {
           return fetch(url, {
-            method: 'POST',
-            headers: {
-              'Accept': 'application/json',
-              'Content-Type': 'application/json',
-              'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-            },
-            body: JSON.stringify({'product_detail_id': product_detail_id}),
-          })
-          .then(response => {
-            if (!response.ok) {
-              throw new Error(response.statusText);
-            }
-            return response.json();
-          })
-          .catch(error => {
-            Swal.showValidationMessage(error);
+              method: 'POST',
+              headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json',
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+              },
+              body: JSON.stringify({
+                'product_detail_id': product_detail_id
+              }),
+            })
+            .then(response => {
+              if (!response.ok) {
+                throw new Error(response.statusText);
+              }
+              return response.json();
+            })
+            .catch(error => {
+              Swal.showValidationMessage(error);
 
-            Swal.update({
-              type: 'error',
-              title: 'Lỗi!',
-              text: '',
-              showConfirmButton: false,
-              cancelButtonText: 'Ok',
-            });
-          })
+              Swal.update({
+                type: 'error',
+                title: 'Lỗi!',
+                text: '',
+                showConfirmButton: false,
+                cancelButtonText: 'Ok',
+              });
+            })
         },
       }).then((result) => {
         if (result.value) {
@@ -758,7 +781,7 @@
             title: result.value.title,
             text: result.value.content,
           }).then((result) => {
-            if (result.value){
+            if (result.value) {
               $(this).closest('.box').remove();
             }
           });
@@ -768,7 +791,7 @@
   });
 </script>
 <script type="text/template" id="product-detail">
-<div class="field-group">
+  <div class="field-group">
   <div class="box box-solid box-default" style="margin-bottom: 5px;">
     <div class="box-header">
       <h3 class="box-title"><span class="name"></span><span class="color"></span></h3>
@@ -781,8 +804,8 @@
       <div class="row">
         <div class="col-md-4">
           <div class="form-group">
-            <label for="color_{?}">Mầu Sắc <span class="text-red">*</span></label>
-            <input type="text" name="product_details[{?}][color]" class="form-control color" id="color_{?}" placeholder="Mầu sắc" required autocomplete="off">
+            <label for="color_{?}">Mẫu mã <span class="text-red">*</span></label>
+            <input type="text" name="product_details[{?}][design]" class="form-control color" id="color_{?}" placeholder="Mẫu mã" required autocomplete="off">
           </div>
         </div>
         <div class="col-md-4">
@@ -832,7 +855,7 @@
 </div>
 </script>
 <script type="text/template" id="product-promotion">
-<div class="field-group">
+  <div class="field-group">
   <div class="box box-solid box-default" style="margin-bottom: 5px;">
     <div class="box-header">
       <h3 class="box-title"></h3>
