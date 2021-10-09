@@ -138,13 +138,13 @@
             <div class="col-md-4">
               <div class="form-group">
                 <label for="weight">Trọng lượng <span class="text-red">*</span></label>
-                <input type="number" min="1" name="weight" class="form-control" id="weight" placeholder="Trọng lượng" required autocomplete="off" value="{{ $product->weight }}">
+                <input type="text" name="weight" class="form-control" id="weight" placeholder="Trọng lượng" required autocomplete="off" value="{{ $product->weight }}">
               </div>
             </div>
             <div class="col-md-4">
               <div class="form-group">
                 <label for="size">Kích thước<span class="text-red">*</span></label>
-                <input type="number" min="1" name="size" class="form-control" id="size" placeholder="Kích thước" required autocomplete="off" value="{{ $product->size }}">
+                <input type="text" name="size" class="form-control" id="size" placeholder="Kích thước" required autocomplete="off" value="{{ $product->size }}">
               </div>
             </div>
             <div class="col-md-4">
