@@ -130,7 +130,7 @@ class UserController extends Controller
 
         if($request->hasFile('avatar_image')){
           $image_name = time() . uniqid() . '_' . $_FILES['avatar_image']['name'];
-          $factory = (new Factory)->withServiceAccount(env('FIREBASE_CREDENTIALS'), 'firebase_credential.json');
+          $factory = (new Factory)->withServiceAccount(base_path() . '/' . 'firebase_credential.json');
           $storage = $factory->createStorage();
           $bucket = $storage->getBucket('nuocmiasaigon-fc089.appspot.com');
           $bucket->upload(
